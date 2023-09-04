@@ -5,8 +5,9 @@ class Passed {
 }
 
 class Failed {
-  constructor(message) {
+  constructor(message,...messageArgs) {
     this.failureMessage = message
+    this.messageArgs = messageArgs
   }
   isPassed() { return false }
   isFailed() { return true }
@@ -41,14 +42,56 @@ class TestSuite {
   }
 }
 
+class TestSuiteDescription {
+  constructor(descOrKlass, options) {
+    if (descOrKlass.name) {
+      this.desc = descOrKlass.name
+    }
+    else if (typeof descOrKlass === "string") {
+      this.desc = descOrKlass
+    }
+    else {
+      throw `You must supply either a class or a string. Got ${typeof descOrKlass}`
+    }
+    if (options) {
+      const entries = Object.entries(options)
+      if (entries.length != 1) {
+        throw `You must supply only the method and behavior: ${entries}`
+      }
+      this.method = entries[0][0]
+      this.behavior = entries[0][1]
+    }
+  }
+
+  toString() {
+    if (this.method) {
+      return `${this.desc}#${this.method} - ${this.behavior}`
+    }
+    else {
+      return this.desc
+    }
+  }
+}
 const suites = []
-const suite = (description, createTests) => {
+const suite = (descOrKlass, descOrCreateTests, createTestsOrUndefined) => {
+  let description
+  let createTests
+
+  if (!createTestsOrUndefined) {
+    createTests = descOrCreateTests
+    description = new TestSuiteDescription(descOrKlass)
+  }
+  else {
+    createTests = createTestsOrUndefined
+    description = new TestSuiteDescription(descOrKlass, descOrCreateTests)
+  }
+
   const suiteObject = new TestSuite(description)
-  const doSetup = (f) => {
+  const setSetup = (f) => {
     suiteObject.setup = f
   }
   createTests({
-    setup: doSetup,
+    setup: setSetup,
     test: suiteObject.test.bind(suiteObject)
   })
   suites.push(suiteObject)

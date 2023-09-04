@@ -19,7 +19,13 @@ const runTests = () => {
           $output.innerText = $output.innerText + `OK   : ${suite.description} - ${test.description}\n`
         }
         else if (result.isFailed()) {
-          $output.innerText = $output.innerText + `FAIL : ${suite.description} - ${test.description}\n       error: ${result.failureMessage}\n`
+          if (result.messageArgs) {
+            $output.innerText = $output.innerText + `FAIL : ${suite.description} - ${test.description}\n       [ see console for error ]\n`
+            console.warn(result.failureMessage,...result.messageArgs)
+          }
+          else {
+            $output.innerText = $output.innerText + `FAIL : ${suite.description} - ${test.description}\n       error: ${result.failureMessage}\n`
+          }
         }
         else {
           $output.innerText = $output.innerText + `ERROR: ${suite.description} - ${test.description}\n       error: ${result.errorMessage}\n`
