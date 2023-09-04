@@ -1,7 +1,5 @@
 /**
  * Wraps a string to return a humanized version, which is basically capitalizing it.
- *
- * @module JunkDrawer
  */
 class HumanizedString {
   /**

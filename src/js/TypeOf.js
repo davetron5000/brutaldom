@@ -1,7 +1,6 @@
 /**
  * Given an object, attempts to return a string that names its type or class.
  *
- * @module JunkDrawer
  */
 class TypeOf {
   /**

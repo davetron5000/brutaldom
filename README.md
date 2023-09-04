@@ -39,47 +39,46 @@ const setup = () {
 window.addEventListener("DOMContentLoaded",setup)
 ```
 
-Even this simplified example has complexity that gets messy:
+This is not so bad, however with more complicated needs, this can become quite difficult:
 
 * Your code has to check that the elements its going to decorate are there
 * The actual behavior relies on magical strings like "click" and "block". If you mis-type these, no error occurs, your app just doesn't work.
 
-Here is how this works in BrutalJS:
+While you could certainly use a big framework, BrutalJs provides classes to wrap DOM elements and use them as the basis for richer
+components and objects that respond to the needs of your app.
+
+For example:
 
 ```javascript
-import { Component, EventManager, View } from "@brutaljs"
+window.addEventListener("DOMContentLoaded",() => {
+  const body = new Body()
+  const button = new Button(body.$selector("main button"))
+  const message = new Message(body.$selector("main p"))
 
+  button.onClick( () => message.show() )
+})
+```
+
+This is the core logic that glues together the app.  `Body` is provided by BrutalJS, but `Button` and `Message` are defined by you:
+
+```javascript
 class Button extends Component {
   constructor(element) {
     super(element)
-    this.clickManager = new EventManager()
-    this.addEventListener("click", () => {
-      this.clickManager.fireEvent()
+    EventManager.defineEvents(this, "click")
+    this.element.addEventListener("click", (event) => {
+      event.preventDefault()
+      this.clickEventManager.fireEvent()
     })
   }
-
-  onClick(listener) { this.clickManager.addListener(listener) }
 }
 
 class Message extends Component {
 }
-
-class MyView extends View {
-  constructor(element) {
-    super(element)
-    const button = new Button(this.$selector("button"))
-    const message = new Message(this.$selector("p"))
-
-    button.onClick( () => message.show() )
-  }
-}
-
-window.addEventListener("DOMContentLoaded",() => {
-  const view = new View(document.querySelector("main"))
-})
 ```
 
-Wow, that's way more code!  But, the core logic of our app is much clearer, *and* it uses methods that must be
-defined. This implementation is free of silent failures, but it's still using the DOM API at its core.
+`Component` is provided by `BrutalJS` and has `hide` and `show` methods.  `EventManager` is provided by BrutalJS
+
+That's it!  It may seem like a bit more code, but this gives you the smallest possible footprint to use the underlying DOM APIs.
 
 

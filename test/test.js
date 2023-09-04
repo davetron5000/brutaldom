@@ -1,5 +1,6 @@
 import "./Component.test"
 import "./WrapsElement.test"
+import "./Body.test"
 import { suites } from "./shared"
 
 const runTests = () => {

@@ -4,6 +4,7 @@
   "description": "Classes to wrap DOM APIs to make writing your app's front-end easier",
   "author": "David Copeland",
   "license": "Hippocratic-2.1",
+  "main": "src/js/index.js",
   "devDependencies": {
     "esbuild": "^0.19.2",
     "http-server": "^14.1.1",

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: CalendarDate.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: CalendarDate.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import TypeOf from "./TypeOf"
+
+/** Represents a date, not a timestamp, but since Date was taken, here we are.
+ *  @property {Number} year  - The four digit year
+ *  @property {Number} month - The month where 1 is January
+ *  @property {Number} day   - The day of the month
+ */
+class CalendarDate {
+  /** @return {CalendarDate} the date for today */
+  static today() {
+    return CalendarDate.daysAgo(0)
+  }
+  /** 
+    * @param {Number} days the number of days ago
+    * @return {CalendarDate} the date as of days days ago
+    */
+  static daysAgo(days) {
+    const date = new Date()
+    date.setDate(date.getDate() - days)
+    return new CalendarDate(date)
+  }
+
+  /** Factory method to create a CalendarDate safely, or return undefined if the value isn't defined.
+   * @see constructor
+   *
+   * @return {CalendarDate|undefined} if undefined is passed, undefined is returned, otherwise the constructor is called.
+   */
+  static fromDateOrStringOrUndefined(dateOrString) {
+    if (dateOrString) {
+      return new CalendarDate(dateOrString)
+    }
+    else {
+      return undefined
+    }
+  }
+
+  /**
+   * Create a CalendarDate based on either a string or a Date
+   *
+   * @param {Date|String} dateOrString - if a string, assumes it's in YYYY-MM-DD format and parses it into a Date.
+   * @throws an error if dateOrString is not a string and not a date
+   */
+  constructor(dateOrString) {
+    let date = dateOrString
+    if ( TypeOf.asString(dateOrString) == "String" ) {
+      const parts = dateOrString.split("-")
+      if (parts.length != 3) {
+        throw `CalendarDate requires a Date or String in the form YYYY-MM-DD, but got '${dateOrString}'`
+      }
+      date = new Date(parts[0], parts[1] - 1, parts[2])
+    }
+    if (!(date instanceof Date)) {
+      throw `CalendarDate requires a Date, but got ${new TypeOf(date)} ('${date}')`
+    }
+
+    this.date  = date
+    this.year  = date.getFullYear()
+    this.month = date.getMonth() + 1
+    this.day   = date.getDate()
+    this.MILLISECONDS_PER_DAY = 24 * 60 * 60 * 1000
+
+    this.string = `${this.year}-${this._zeroPad(this.month)}-${this._zeroPad(this.day)}`
+  }
+
+  /**
+   * @returns true if the other calendar date is the same day as this one
+   *
+   * @param {CalendarDate} otherCalendarDate
+   */
+  isSameDayAs(otherCalendarDate) {
+    if (!(otherCalendarDate instanceof CalendarDate)) {
+      return false
+    }
+    return (this.year  === otherCalendarDate.year) &amp;&amp;
+      (this.month === otherCalendarDate.month) &amp;&amp;
+      (this.day   === otherCalendarDate.day)
+  }
+
+  /** 
+   * @returns number of days between this CalendarDate and the passed-in one. Positive value
+   * means that this date is after the passed one. This works
+   * by converted both to UTC, then examining the difference in milliseconds.
+   *
+   * @param {CalendarDate} otherCalendarDate
+   */
+  daysDiff(otherCalendarDate) {
+
+    const usUTC    = this.asUTC()
+    const otherUTC = otherCalendarDate.asUTC()
+
+    return ( otherUTC.date - usUTC.date) / this.MILLISECONDS_PER_DAY
+  }
+
+  /** @return true if this date is after the passed on.
+   *
+   * @param {CalendarDate} otherCalendarDate
+   */
+  isAfter(otherCalendarDate) {
+    return this.daysDiff(otherCalendarDate) > 0
+  }
+
+  _zeroPad(number) {
+    if (number > 9) {
+      return `${number}`
+    }
+    else {
+      return `0${number}`
+    }
+  }
+
+  /** @return {String} the YYYY-MM-DD version of this date */
+  toString()    { return this.string }
+
+  /** @return {CalendarDate} in UTC */
+  asUTC() {
+    const inUTC = new Date(this.date);
+    inUTC.setMinutes(inUTC.getMinutes() - inUTC.getTimezoneOffset());
+    return new CalendarDate(inUTC);
+  }
+}
+export default CalendarDate
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Externals</h3><ul><li><a href="external-Element.html">Element</a></li><li><a href="external-Node.html">Node</a></li><li><a href="external-Performance.html">Performance</a></li><li><a href="external-Promise.html">Promise</a></li></ul><h3>Classes</h3><ul><li><a href="Animator.html">Animator</a></li><li><a href="AnimatorPreferences.html">AnimatorPreferences</a></li><li><a href="Body.html">Body</a></li><li><a href="BrutalJSBase.html">BrutalJSBase</a></li><li><a href="CalendarDate.html">CalendarDate</a></li><li><a href="Component.html">Component</a></li><li><a href="Env.html">Env</a></li><li><a href="EventAlreadyDefined.html">EventAlreadyDefined</a></li><li><a href="EventManager.html">EventManager</a></li><li><a href="HumanizedString.html">HumanizedString</a></li><li><a href="LogViewer.html">LogViewer</a></li><li><a href="Runtime.html">Runtime</a></li><li><a href="Template.html">Template</a></li><li><a href="TypeOf.html">TypeOf</a></li><li><a href="WrapsElement.html">WrapsElement</a></li></ul><h3>Mixins</h3><ul><li><a href="LogMixin.html">LogMixin</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Mon Sep 04 2023 19:22:13 GMT+0000 (Coordinated Universal Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

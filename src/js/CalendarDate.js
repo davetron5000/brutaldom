@@ -4,7 +4,6 @@ import TypeOf from "./TypeOf"
  *  @property {Number} year  - The four digit year
  *  @property {Number} month - The month where 1 is January
  *  @property {Number} day   - The day of the month
- *  @module JunkDrawer
  */
 class CalendarDate {
   /** @return {CalendarDate} the date for today */
