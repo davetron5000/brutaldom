@@ -6,8 +6,10 @@
   "license": "Hippocratic-2.1",
   "main": "src/js/index.js",
   "devDependencies": {
+    "better-docs": "^2.7.2",
     "esbuild": "^0.19.2",
     "http-server": "^14.1.1",
-    "jsdoc": "^4.0.2"
+    "jsdoc": "^4.0.2",
+    "taffydb": "^2.7.3"
   }
 }

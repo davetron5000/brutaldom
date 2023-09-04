@@ -1,25 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="utf-8">
-    <title>JSDoc: Mixin: LogMixin</title>
 
-    <script src="scripts/prettify/prettify.js"> </script>
-    <script src="scripts/prettify/lang-css.js"> </script>
-    <!--[if lt IE 9]>
-      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
-    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> LogMixin</title>
+
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="./build/entry.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+  <link type="text/css" rel="stylesheet" href="">
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  
 </head>
 
-<body>
 
-<div id="main">
 
-    <h1 class="page-title">Mixin: LogMixin</h1>
-
+<body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
     
+
+<div class="top-nav">
+    <div class="inner">
+        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+            
+            
+        </div>
+        <div class="menu">
+            
+            <div class="navigation">
+                <a
+                    href="index.html"
+                    class="link"
+                >
+                    Documentation
+                </a>
+                
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="main">
+        <div
+            class="sidebar "
+            id="sidebarNav"
+        >
+            
+                <div class="search-wrapper">
+                    <input id="search" type="text" placeholder="Search docs..." class="input">
+                </div>
+            
+            <nav>
+                
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Externals</h3><ul><li><a href="external-Element.html">Element</a></li><li><a href="external-Node.html">Node</a></li><li><a href="external-Performance.html">Performance</a></li><li><a href="external-Promise.html">Promise</a></li></ul><h3>Classes</h3><ul><li><a href="Animator.html">Animator</a></li><li><a href="AnimatorPreferences.html">AnimatorPreferences</a></li><li><a href="Body.html">Body</a></li><li><a href="BrutalJSBase.html">BrutalJSBase</a></li><li><a href="CalendarDate.html">CalendarDate</a></li><li><a href="Component.html">Component</a></li><li><a href="Env.html">Env</a></li><li><a href="EventAlreadyDefined.html">EventAlreadyDefined</a></li><li><a href="EventManager.html">EventManager</a></li><li><a href="HumanizedString.html">HumanizedString</a></li><li><a href="LogViewer.html">LogViewer</a></li><li><a href="Runtime.html">Runtime</a></li><li><a href="Template.html">Template</a></li><li><a href="TypeOf.html">TypeOf</a></li><li><a href="WrapsElement.html">WrapsElement</a></li></ul><h3>Mixins</h3><ul><li><a href="LogMixin.html">LogMixin</a></li></ul></div>
+                
+            </nav>
+        </div>
+        <div class="core" id="main-content-wrapper">
+            <div class="content">
+                <header class="page-title">
+                    <p>Mixin</p>
+                    <h1>LogMixin</h1>
+                </header>
+                
 
 
 
@@ -72,14 +133,6 @@ This allows you to build up context about what happened inside the method.</p></
     
 
     
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Log.js.html">Log.js</a>, <a href="Log.js.html#line15">line 15</a>
-    </li></ul></dd>
-    
-
     
 
     
@@ -94,13 +147,22 @@ This allows you to build up context about what happened inside the method.</p></
     
 
     
+
+    
+        <p class="tag-source">
+            <a href="Log.js.html" class="button">View Source</a>
+            <span>
+                <a href="Log.js.html">Log.js</a>, <a href="Log.js.html#line15">line 15</a>
+            </span>
+        </p>
+    
 </dl>
 
 
         
     
     </div>
-
+    
     
 
     
@@ -116,26 +178,35 @@ This allows you to build up context about what happened inside the method.</p></
     
 
     
-        <h3 class="subsection-title">Methods</h3>
+        <div class='vertical-section'>
+            <h1>Methods</h1>
+            <div class="members">
+            
+                <div class="member">
 
+
+    
+    <h4 class="name" id=".event">
+        <a class="href-link" href="#.event">#</a>
         
             
-
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                event<span class="signature">(eventName, details)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
     
 
     
-    <h4 class="name" id=".event"><span class="type-signature">(static) </span>event<span class="signature">(eventName, details)</span><span class="type-signature"></span></h4>
     
-
+    <div class="description">
+        <p>Record an event via performance.mark</p>
+    </div>
     
-    <p class="summary"><p>Record an event via performance.mark</p>.</p>
-    
-
-
-
-<div class="description">
-    <p>Record an event via performance.mark</p>
-</div>
 
 
 
@@ -147,75 +218,79 @@ This allows you to build up context about what happened inside the method.</p></
 
     <h5>Parameters:</h5>
     
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
+<div class="table-container">
+    <table class="params table">
+        <thead>
         <tr>
             
-                <td class="name"><code>eventName</code></td>
+            <th>Name</th>
             
 
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
-            
-            </td>
+            <th>Type</th>
 
             
 
             
 
-            <td class="description last"><p>name of the event - can be anything</p></td>
+            <th class="last">Description</th>
         </tr>
+        </thead>
 
-    
-
-        <tr>
-            
-                <td class="name"><code>details</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Object</span>
-
+        <tbody>
+        
 
             
-            </td>
+<tr class="deep-level-0">
+  
+      <td class="name"><code>eventName</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">String</code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>name of the event - can be anything</p></td>
+</tr>
+
+
+        
 
             
+<tr class="deep-level-0">
+  
+      <td class="name"><code>details</code></td>
+  
 
-            
+  <td class="type">
+  
+      
+<code class="param-type">Object</code>
 
-            <td class="description last"><p>passed to performance.mark and performance.measure. Added to the default details this mixin stores.</p></td>
-        </tr>
 
-    
-    </tbody>
-</table>
+  
+  </td>
 
+  
+
+  
+
+  <td class="description last"><p>passed to performance.mark and performance.measure. Added to the default details this mixin stores.</p></td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
 
 
 
@@ -246,18 +321,19 @@ This allows you to build up context about what happened inside the method.</p></
     
 
     
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Log.js.html">Log.js</a>, <a href="Log.js.html#line43">line 43</a>
-    </li></ul></dd>
     
 
     
 
     
 
+    
+        <p class="tag-source">
+            <a href="Log.js.html" class="button">View Source</a>
+            <span>
+                <a href="Log.js.html">Log.js</a>, <a href="Log.js.html#line43">line 43</a>
+            </span>
+        </p>
     
 </dl>
 
@@ -280,24 +356,34 @@ This allows you to build up context about what happened inside the method.</p></
 
 
 
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".measure">
+        <a class="href-link" href="#.measure">#</a>
         
             
-
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                measure<span class="signature">(measurementName, start, end)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
     
 
     
-    <h4 class="name" id=".measure"><span class="type-signature">(static) </span>measure<span class="signature">(measurementName, start, end)</span><span class="type-signature"></span></h4>
     
-
+    <div class="description">
+        <p>Record a measurement with performance.measure</p>
+    </div>
     
-    <p class="summary"><p>Record a measurement with performance.measure</p>.</p>
-    
-
-
-
-<div class="description">
-    <p>Record a measurement with performance.measure</p>
-</div>
 
 
 
@@ -309,98 +395,104 @@ This allows you to build up context about what happened inside the method.</p></
 
     <h5>Parameters:</h5>
     
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
+<div class="table-container">
+    <table class="params table">
+        <thead>
         <tr>
             
-                <td class="name"><code>measurementName</code></td>
+            <th>Name</th>
             
 
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
-            
-            </td>
+            <th>Type</th>
 
             
 
             
 
-            <td class="description last"><p>name of the measurement. Can be anything.</p></td>
+            <th class="last">Description</th>
         </tr>
+        </thead>
 
-    
-
-        <tr>
-            
-                <td class="name"><code>start</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
+        <tbody>
+        
 
             
-            </td>
+<tr class="deep-level-0">
+  
+      <td class="name"><code>measurementName</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">String</code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>name of the measurement. Can be anything.</p></td>
+</tr>
+
+
+        
 
             
+<tr class="deep-level-0">
+  
+      <td class="name"><code>start</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">String</code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>the start mark name, as used in the Performance API</p></td>
+</tr>
+
+
+        
 
             
+<tr class="deep-level-0">
+  
+      <td class="name"><code>end</code></td>
+  
 
-            <td class="description last"><p>the start mark name, as used in the Performance API</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>end</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
+  <td class="type">
+  
+      
+<code class="param-type">String</code>
 
 
-            
-            </td>
+  
+  </td>
 
-            
+  
 
-            
+  
 
-            <td class="description last"><p>the end mark name, as used in the Performance API</p></td>
-        </tr>
+  <td class="description last"><p>the end mark name, as used in the Performance API</p></td>
+</tr>
 
-    
-    </tbody>
-</table>
 
+        
+        </tbody>
+    </table>
+</div>
 
 
 
@@ -431,18 +523,19 @@ This allows you to build up context about what happened inside the method.</p></
     
 
     
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Log.js.html">Log.js</a>, <a href="Log.js.html#line55">line 55</a>
-    </li></ul></dd>
     
 
     
 
     
 
+    
+        <p class="tag-source">
+            <a href="Log.js.html" class="button">View Source</a>
+            <span>
+                <a href="Log.js.html">Log.js</a>, <a href="Log.js.html#line55">line 55</a>
+            </span>
+        </p>
     
 </dl>
 
@@ -465,25 +558,35 @@ This allows you to build up context about what happened inside the method.</p></
 
 
 
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".methodDone">
+        <a class="href-link" href="#.methodDone">#</a>
         
             
-
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                methodDone<span class="signature">(methodName, details)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
     
 
     
-    <h4 class="name" id=".methodDone"><span class="type-signature">(static) </span>methodDone<span class="signature">(methodName, details)</span><span class="type-signature"></span></h4>
     
-
-    
-    <p class="summary">Used to log the end of a method.</p>
-    
-
-
-
-<div class="description">
-    <p>Used to log the end of a method. You must have called methodStart. This will
+    <div class="description">
+        <p>Used to log the end of a method. You must have called methodStart. This will
 record an event and a measurement</p>
-</div>
+    </div>
+    
 
 
 
@@ -495,75 +598,79 @@ record an event and a measurement</p>
 
     <h5>Parameters:</h5>
     
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
+<div class="table-container">
+    <table class="params table">
+        <thead>
         <tr>
             
-                <td class="name"><code>methodName</code></td>
+            <th>Name</th>
             
 
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
-            
-            </td>
+            <th>Type</th>
 
             
 
             
 
-            <td class="description last"><p>name of the method that just got called</p></td>
+            <th class="last">Description</th>
         </tr>
+        </thead>
 
-    
-
-        <tr>
-            
-                <td class="name"><code>details</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Object</span>
-
+        <tbody>
+        
 
             
-            </td>
+<tr class="deep-level-0">
+  
+      <td class="name"><code>methodName</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">String</code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>name of the method that just got called</p></td>
+</tr>
+
+
+        
 
             
+<tr class="deep-level-0">
+  
+      <td class="name"><code>details</code></td>
+  
 
-            
+  <td class="type">
+  
+      
+<code class="param-type">Object</code>
 
-            <td class="description last"><p>passed to performance.mark and performance.measure</p></td>
-        </tr>
 
-    
-    </tbody>
-</table>
+  
+  </td>
 
+  
+
+  
+
+  <td class="description last"><p>passed to performance.mark and performance.measure</p></td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
 
 
 
@@ -594,18 +701,19 @@ record an event and a measurement</p>
     
 
     
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Log.js.html">Log.js</a>, <a href="Log.js.html#line33">line 33</a>
-    </li></ul></dd>
     
 
     
 
     
 
+    
+        <p class="tag-source">
+            <a href="Log.js.html" class="button">View Source</a>
+            <span>
+                <a href="Log.js.html">Log.js</a>, <a href="Log.js.html#line33">line 33</a>
+            </span>
+        </p>
     
 </dl>
 
@@ -628,24 +736,34 @@ record an event and a measurement</p>
 
 
 
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".methodStart">
+        <a class="href-link" href="#.methodStart">#</a>
         
             
-
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                methodStart<span class="signature">(methodName, details)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
     
 
     
-    <h4 class="name" id=".methodStart"><span class="type-signature">(static) </span>methodStart<span class="signature">(methodName, details)</span><span class="type-signature"></span></h4>
     
-
+    <div class="description">
+        <p>Used to log the start of a method for later measurement of the method's duration.</p>
+    </div>
     
-    <p class="summary">Used to log the start of a method for later measurement of the method's duration.</p>
-    
-
-
-
-<div class="description">
-    <p>Used to log the start of a method for later measurement of the method's duration.</p>
-</div>
 
 
 
@@ -657,75 +775,79 @@ record an event and a measurement</p>
 
     <h5>Parameters:</h5>
     
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
+<div class="table-container">
+    <table class="params table">
+        <thead>
         <tr>
             
-                <td class="name"><code>methodName</code></td>
+            <th>Name</th>
             
 
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
-            
-            </td>
+            <th>Type</th>
 
             
 
             
 
-            <td class="description last"><p>name of the method that just got called</p></td>
+            <th class="last">Description</th>
         </tr>
+        </thead>
 
-    
-
-        <tr>
-            
-                <td class="name"><code>details</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Object</span>
-
+        <tbody>
+        
 
             
-            </td>
+<tr class="deep-level-0">
+  
+      <td class="name"><code>methodName</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">String</code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>name of the method that just got called</p></td>
+</tr>
+
+
+        
 
             
+<tr class="deep-level-0">
+  
+      <td class="name"><code>details</code></td>
+  
 
-            
+  <td class="type">
+  
+      
+<code class="param-type">Object</code>
 
-            <td class="description last"><p>passed to performance.mark</p></td>
-        </tr>
 
-    
-    </tbody>
-</table>
+  
+  </td>
 
+  
+
+  
+
+  <td class="description last"><p>passed to performance.mark</p></td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
 
 
 
@@ -756,18 +878,19 @@ record an event and a measurement</p>
     
 
     
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Log.js.html">Log.js</a>, <a href="Log.js.html#line22">line 22</a>
-    </li></ul></dd>
     
 
     
 
     
 
+    
+        <p class="tag-source">
+            <a href="Log.js.html" class="button">View Source</a>
+            <span>
+                <a href="Log.js.html">Log.js</a>, <a href="Log.js.html#line22">line 22</a>
+            </span>
+        </p>
     
 </dl>
 
@@ -790,24 +913,34 @@ record an event and a measurement</p>
 
 
 
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".mixin">
+        <a class="href-link" href="#.mixin">#</a>
         
             
-
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                mixin<span class="signature">(klass)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
     
 
     
-    <h4 class="name" id=".mixin"><span class="type-signature">(static) </span>mixin<span class="signature">(klass)</span><span class="type-signature"></span></h4>
     
-
+    <div class="description">
+        <p>Mixes this into any class</p>
+    </div>
     
-    <p class="summary"><p>Mixes this into any class</p>.</p>
-    
-
-
-
-<div class="description">
-    <p>Mixes this into any class</p>
-</div>
 
 
 
@@ -819,52 +952,54 @@ record an event and a measurement</p>
 
     <h5>Parameters:</h5>
     
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
+<div class="table-container">
+    <table class="params table">
+        <thead>
         <tr>
             
-                <td class="name"><code>klass</code></td>
+            <th>Name</th>
             
 
-            <td class="type">
-            
-                
-<span class="param-type">Class</span>
-
-
-            
-            </td>
+            <th>Type</th>
 
             
 
             
 
-            <td class="description last"><p>a Class</p></td>
+            <th class="last">Description</th>
         </tr>
+        </thead>
 
-    
-    </tbody>
-</table>
+        <tbody>
+        
 
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>klass</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">Class</code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>a Class</p></td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
 
 
 
@@ -895,18 +1030,19 @@ record an event and a measurement</p>
     
 
     
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Log.js.html">Log.js</a>, <a href="Log.js.html#line96">line 96</a>
-    </li></ul></dd>
     
 
     
 
     
 
+    
+        <p class="tag-source">
+            <a href="Log.js.html" class="button">View Source</a>
+            <span>
+                <a href="Log.js.html">Log.js</a>, <a href="Log.js.html#line96">line 96</a>
+            </span>
+        </p>
     
 </dl>
 
@@ -929,7 +1065,11 @@ record an event and a measurement</p>
 
 
 
-        
+
+</div>
+            
+            </div>
+        </div>
     
 
     
@@ -942,19 +1082,28 @@ record an event and a measurement</p>
 
 
 
-</div>
-
-<nav>
-    <h2><a href="index.html">Home</a></h2><h3>Externals</h3><ul><li><a href="external-Element.html">Element</a></li><li><a href="external-Node.html">Node</a></li><li><a href="external-Performance.html">Performance</a></li><li><a href="external-Promise.html">Promise</a></li></ul><h3>Classes</h3><ul><li><a href="Animator.html">Animator</a></li><li><a href="AnimatorPreferences.html">AnimatorPreferences</a></li><li><a href="Body.html">Body</a></li><li><a href="BrutalJSBase.html">BrutalJSBase</a></li><li><a href="CalendarDate.html">CalendarDate</a></li><li><a href="Component.html">Component</a></li><li><a href="Env.html">Env</a></li><li><a href="EventAlreadyDefined.html">EventAlreadyDefined</a></li><li><a href="EventManager.html">EventManager</a></li><li><a href="HumanizedString.html">HumanizedString</a></li><li><a href="LogViewer.html">LogViewer</a></li><li><a href="Runtime.html">Runtime</a></li><li><a href="Template.html">Template</a></li><li><a href="TypeOf.html">TypeOf</a></li><li><a href="WrapsElement.html">WrapsElement</a></li></ul><h3>Mixins</h3><ul><li><a href="LogMixin.html">LogMixin</a></li></ul>
-</nav>
-
-<br class="clear">
-
-<footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Mon Sep 04 2023 19:22:13 GMT+0000 (Coordinated Universal Time)
-</footer>
-
-<script> prettyPrint(); </script>
+            </div>
+            
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.2</a></p>
+                    <p class="sidebar-created-by">
+                        <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by
+                        <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+                    </p>
+                </div>
+            </footer>
+            
+        </div>
+        <div id="side-nav" class="side-nav">
+        </div>
+    </div>
+<script src="scripts/app.min.js"></script>
+<script>PR.prettyPrint();</script>
 <script src="scripts/linenumber.js"> </script>
+
+<script src="scripts/search.js"> </script>
+
+
 </body>
 </html>

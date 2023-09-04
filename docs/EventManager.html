@@ -1,25 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="utf-8">
-    <title>JSDoc: Class: EventManager</title>
 
-    <script src="scripts/prettify/prettify.js"> </script>
-    <script src="scripts/prettify/lang-css.js"> </script>
-    <!--[if lt IE 9]>
-      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
-    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> EventManager</title>
+
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="./build/entry.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+  <link type="text/css" rel="stylesheet" href="">
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  
 </head>
 
-<body>
 
-<div id="main">
 
-    <h1 class="page-title">Class: EventManager</h1>
-
+<body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
     
+
+<div class="top-nav">
+    <div class="inner">
+        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+            
+            
+        </div>
+        <div class="menu">
+            
+            <div class="navigation">
+                <a
+                    href="index.html"
+                    class="link"
+                >
+                    Documentation
+                </a>
+                
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="main">
+        <div
+            class="sidebar "
+            id="sidebarNav"
+        >
+            
+                <div class="search-wrapper">
+                    <input id="search" type="text" placeholder="Search docs..." class="input">
+                </div>
+            
+            <nav>
+                
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Externals</h3><ul><li><a href="external-Element.html">Element</a></li><li><a href="external-Node.html">Node</a></li><li><a href="external-Performance.html">Performance</a></li><li><a href="external-Promise.html">Promise</a></li></ul><h3>Classes</h3><ul><li><a href="Animator.html">Animator</a></li><li><a href="AnimatorPreferences.html">AnimatorPreferences</a></li><li><a href="Body.html">Body</a></li><li><a href="BrutalJSBase.html">BrutalJSBase</a></li><li><a href="CalendarDate.html">CalendarDate</a></li><li><a href="Component.html">Component</a></li><li><a href="Env.html">Env</a></li><li><a href="EventAlreadyDefined.html">EventAlreadyDefined</a></li><li><a href="EventManager.html">EventManager</a></li><li><a href="HumanizedString.html">HumanizedString</a></li><li><a href="LogViewer.html">LogViewer</a></li><li><a href="Runtime.html">Runtime</a></li><li><a href="Template.html">Template</a></li><li><a href="TypeOf.html">TypeOf</a></li><li><a href="WrapsElement.html">WrapsElement</a></li></ul><h3>Mixins</h3><ul><li><a href="LogMixin.html">LogMixin</a></li></ul></div>
+                
+            </nav>
+        </div>
+        <div class="core" id="main-content-wrapper">
+            <div class="content">
+                <header class="page-title">
+                    <p>Class</p>
+                    <h1>EventManager</h1>
+                </header>
+                
 
 
 
@@ -44,24 +105,33 @@ of those events.</p></div>
     <div class="container-overview">
     
         
-
-    
-    <h2>Constructor</h2>
-    
-
-    
-    <h4 class="name" id="EventManager"><span class="type-signature"></span>new EventManager<span class="signature">(object, eventName)</span><span class="type-signature"></span></h4>
-    
-
-    
-    <p class="summary">Create an EventManager attached to the given object for the given event name.</p>
-    
+            <div class='vertical-section'>
+                <div class="members">
+                    <div class="member">
+                        <div class=name>
+                            <span class="tag">Constructor</span>
+                        </div>
+                        
 
 
+    
+    <h4 class="name" id="EventManager">
+        <a class="href-link" href="#EventManager">#</a>
+        
+        <span class="code-name">
+            
+                new EventManager<span class="signature">(object, eventName)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
 
-<div class="description">
-    <p>Create an EventManager attached to the given object for the given event name.</p>
-</div>
+    
+    
+    <div class="description">
+        <p>Create an EventManager attached to the given object for the given event name.</p>
+    </div>
+    
 
 
 
@@ -73,75 +143,79 @@ of those events.</p></div>
 
     <h5>Parameters:</h5>
     
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
+<div class="table-container">
+    <table class="params table">
+        <thead>
         <tr>
             
-                <td class="name"><code>object</code></td>
+            <th>Name</th>
             
 
-            <td class="type">
-            
-                
-<span class="param-type">Object</span>
-
-
-            
-            </td>
+            <th>Type</th>
 
             
 
             
 
-            <td class="description last"><p>the object that will be firing events. This is only used for logging.</p></td>
+            <th class="last">Description</th>
         </tr>
+        </thead>
 
-    
-
-        <tr>
-            
-                <td class="name"><code>eventName</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
+        <tbody>
+        
 
             
-            </td>
+<tr class="deep-level-0">
+  
+      <td class="name"><code>object</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">Object</code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>the object that will be firing events. This is only used for logging.</p></td>
+</tr>
+
+
+        
 
             
+<tr class="deep-level-0">
+  
+      <td class="name"><code>eventName</code></td>
+  
 
-            
+  <td class="type">
+  
+      
+<code class="param-type">String</code>
 
-            <td class="description last"><p>the name of the event.  This is only used for logging.</p></td>
-        </tr>
 
-    
-    </tbody>
-</table>
+  
+  </td>
 
+  
+
+  
+
+  <td class="description last"><p>the name of the event.  This is only used for logging.</p></td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
 
 
 
@@ -172,20 +246,23 @@ of those events.</p></div>
     
 
     
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="EventManager.js.html">EventManager.js</a>, <a href="EventManager.js.html#line84">line 84</a>
-    </li></ul></dd>
     
 
     
 
     
 
+    
+        <p class="tag-source">
+            <a href="EventManager.js.html" class="button">View Source</a>
+            <span>
+                <a href="EventManager.js.html">EventManager.js</a>, <a href="EventManager.js.html#line84">line 84</a>
+            </span>
+        </p>
     
 </dl>
+
+
 
 
 
@@ -207,7 +284,8 @@ of those events.</p></div>
 
     <h5>Examples</h5>
     
-    <pre class="prettyprint"><code>class Button extends Component {
+    
+        <pre class="prettyprint"><code>class Button extends Component {
   constructor(element) {
     super(element)
     this.clickEventManager = new EventManager(this,"click")
@@ -218,8 +296,10 @@ of those events.</p></div>
 
   onClick(listener) { this.clickEventManager.addListener(listener) }
 }</code></pre>
+    
 
-    <pre class="prettyprint"><code>class Button extends Component {
+    
+        <pre class="prettyprint"><code>class Button extends Component {
   constructor(element) {
     super(element)
     EventManager.defineEvents(this, "click")
@@ -230,12 +310,17 @@ const button = new Button(document.querySelector("button"))
 button.onClick( (event) => {
   // do whatever on a click
 })</code></pre>
+    
 
 
 
+                    </div>
+                </div>
+            </div>
+        
     
     </div>
-
+    
     
 
     
@@ -251,26 +336,31 @@ button.onClick( (event) => {
     
 
     
-        <h3 class="subsection-title">Methods</h3>
-
-        
+        <div class='vertical-section'>
+            <h1>Methods</h1>
+            <div class="members">
             
+                <div class="member">
 
+
+    
+    <h4 class="name" id="addListener">
+        <a class="href-link" href="#addListener">#</a>
+        
+        <span class="code-name">
+            
+                addListener<span class="signature">(listener)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
     
 
     
-    <h4 class="name" id="addListener"><span class="type-signature"></span>addListener<span class="signature">(listener)</span><span class="type-signature"></span></h4>
     
-
+    <div class="description">
+        <p>Adds a listener to this event.</p>
+    </div>
     
-    <p class="summary">Adds a listener to this event.</p>
-    
-
-
-
-<div class="description">
-    <p>Adds a listener to this event.</p>
-</div>
 
 
 
@@ -282,52 +372,54 @@ button.onClick( (event) => {
 
     <h5>Parameters:</h5>
     
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
+<div class="table-container">
+    <table class="params table">
+        <thead>
         <tr>
             
-                <td class="name"><code>listener</code></td>
+            <th>Name</th>
             
 
-            <td class="type">
-            
-                
-<span class="param-type"><a href="EventManager.html#~listener">EventManager~listener</a></span>
-
-
-            
-            </td>
+            <th>Type</th>
 
             
 
             
 
-            <td class="description last"><p>to be called when the event fires.</p></td>
+            <th class="last">Description</th>
         </tr>
+        </thead>
 
-    
-    </tbody>
-</table>
+        <tbody>
+        
 
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>listener</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type"><a href="EventManager.html#~listener">EventManager~listener</a></code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>to be called when the event fires.</p></td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
 
 
 
@@ -358,18 +450,19 @@ button.onClick( (event) => {
     
 
     
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="EventManager.js.html">EventManager.js</a>, <a href="EventManager.js.html#line123">line 123</a>
-    </li></ul></dd>
     
 
     
 
     
 
+    
+        <p class="tag-source">
+            <a href="EventManager.js.html" class="button">View Source</a>
+            <span>
+                <a href="EventManager.js.html">EventManager.js</a>, <a href="EventManager.js.html#line123">line 123</a>
+            </span>
+        </p>
     
 </dl>
 
@@ -392,24 +485,30 @@ button.onClick( (event) => {
 
 
 
-        
-            
 
-    
-
-    
-    <h4 class="name" id="fireEvent"><span class="type-signature"></span>fireEvent<span class="signature">(&hellip;args)</span><span class="type-signature"></span></h4>
-    
-
-    
-    <p class="summary">Fire the event, passing each listener the given args.</p>
-    
-
-
-
-<div class="description">
-    <p>Fire the event, passing each listener the given args.</p>
 </div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="fireEvent">
+        <a class="href-link" href="#fireEvent">#</a>
+        
+        <span class="code-name">
+            
+                fireEvent<span class="signature">(&hellip;args)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Fire the event, passing each listener the given args.</p>
+    </div>
+    
 
 
 
@@ -421,64 +520,66 @@ button.onClick( (event) => {
 
     <h5>Parameters:</h5>
     
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-        <th>Attributes</th>
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
+<div class="table-container">
+    <table class="params table">
+        <thead>
         <tr>
             
-                <td class="name"><code>args</code></td>
+            <th>Name</th>
             
 
-            <td class="type">
-            
-                
-<span class="param-type">Object</span>
-
+            <th>Type</th>
 
             
-            </td>
-
-            
-                <td class="attributes">
-                
-
-                
-
-                
-                    &lt;repeatable><br>
-                
-                </td>
+            <th>Attributes</th>
             
 
             
 
-            <td class="description last"><p>any args relevant to the event. You should document what these are.</p></td>
+            <th class="last">Description</th>
         </tr>
+        </thead>
 
-    
-    </tbody>
-</table>
+        <tbody>
+        
 
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>args</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">Object</code>
+
+
+  
+  </td>
+
+  
+      <td class="attributes">
+      
+
+      
+
+      
+          &lt;repeatable><br>
+      
+      </td>
+  
+
+  
+
+  <td class="description last"><p>any args relevant to the event. You should document what these are.</p></td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
 
 
 
@@ -509,18 +610,19 @@ button.onClick( (event) => {
     
 
     
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="EventManager.js.html">EventManager.js</a>, <a href="EventManager.js.html#line140">line 140</a>
-    </li></ul></dd>
     
 
     
 
     
 
+    
+        <p class="tag-source">
+            <a href="EventManager.js.html" class="button">View Source</a>
+            <span>
+                <a href="EventManager.js.html">EventManager.js</a>, <a href="EventManager.js.html#line140">line 140</a>
+            </span>
+        </p>
     
 </dl>
 
@@ -543,24 +645,30 @@ button.onClick( (event) => {
 
 
 
-        
-            
 
-    
-
-    
-    <h4 class="name" id="removeListener"><span class="type-signature"></span>removeListener<span class="signature">(listener)</span><span class="type-signature"></span></h4>
-    
-
-    
-    <p class="summary">Remove a listener from this event.</p>
-    
-
-
-
-<div class="description">
-    <p>Remove a listener from this event.</p>
 </div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="removeListener">
+        <a class="href-link" href="#removeListener">#</a>
+        
+        <span class="code-name">
+            
+                removeListener<span class="signature">(listener)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Remove a listener from this event.</p>
+    </div>
+    
 
 
 
@@ -572,52 +680,54 @@ button.onClick( (event) => {
 
     <h5>Parameters:</h5>
     
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
+<div class="table-container">
+    <table class="params table">
+        <thead>
         <tr>
             
-                <td class="name"><code>listener</code></td>
+            <th>Name</th>
             
 
-            <td class="type">
-            
-                
-<span class="param-type"><a href="EventManager.html#~listener">EventManager~listener</a></span>
-
-
-            
-            </td>
+            <th>Type</th>
 
             
 
             
 
-            <td class="description last"><p>to be called when the event fires.</p></td>
+            <th class="last">Description</th>
         </tr>
+        </thead>
 
-    
-    </tbody>
-</table>
+        <tbody>
+        
 
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>listener</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type"><a href="EventManager.html#~listener">EventManager~listener</a></code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>to be called when the event fires.</p></td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
 
 
 
@@ -648,18 +758,19 @@ button.onClick( (event) => {
     
 
     
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="EventManager.js.html">EventManager.js</a>, <a href="EventManager.js.html#line129">line 129</a>
-    </li></ul></dd>
     
 
     
 
     
 
+    
+        <p class="tag-source">
+            <a href="EventManager.js.html" class="button">View Source</a>
+            <span>
+                <a href="EventManager.js.html">EventManager.js</a>, <a href="EventManager.js.html#line129">line 129</a>
+            </span>
+        </p>
     
 </dl>
 
@@ -682,25 +793,35 @@ button.onClick( (event) => {
 
 
 
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".createDirectProxyFor">
+        <a class="href-link" href="#.createDirectProxyFor">#</a>
         
             
-
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                createDirectProxyFor<span class="signature">(object, namedParams)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
     
 
     
-    <h4 class="name" id=".createDirectProxyFor"><span class="type-signature">(static) </span>createDirectProxyFor<span class="signature">(object, namedParams)</span><span class="type-signature"></span></h4>
     
-
-    
-    <p class="summary">Creates an EventManager and related methods for an existing DOM event.</p>
-    
-
-
-
-<div class="description">
-    <p>Creates an EventManager and related methods for an existing DOM event.  Calls preventDefault on
+    <div class="description">
+        <p>Creates an EventManager and related methods for an existing DOM event.  Calls preventDefault on
 the fired event before triggering listeners.</p>
-</div>
+    </div>
+    
 
 
 
@@ -712,147 +833,128 @@ the fired event before triggering listeners.</p>
 
     <h5>Parameters:</h5>
     
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
+<div class="table-container">
+    <table class="params table">
+        <thead>
         <tr>
             
-                <td class="name"><code>object</code></td>
+            <th>Name</th>
             
 
-            <td class="type">
-            
-                
-<span class="param-type">Object</span>
-
-
-            
-            </td>
+            <th>Type</th>
 
             
 
             
 
-            <td class="description last"><p>the object that is firing the event</p></td>
+            <th class="last">Description</th>
         </tr>
+        </thead>
 
-    
-
-        <tr>
-            
-                <td class="name"><code>namedParams</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Object</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">
-                <h6>Properties</h6>
-                
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
+        <tbody>
         
 
-        <th>Type</th>
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>object</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">Object</code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>the object that is firing the event</p></td>
+</tr>
+
 
         
 
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>namedParams</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">Object</code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"></td>
+</tr>
+
+  
+  
+    
+<tr class="deep-level-1">
+  
+      <td class="name"><code>element</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type"><a href="external-Element.html">external:Element</a></code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>Element that will fire the event</p></td>
+</tr>
+
+  
+    
+<tr class="deep-level-1">
+  
+      <td class="name"><code>eventName</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">String</code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>name of the event that the element will fire</p></td>
+</tr>
+
+  
+
+
         
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>element</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="external-Element.html">external:Element</a></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>Element that will fire the event</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>eventName</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>name of the event that the element will fire</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-            </td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
+        </tbody>
+    </table>
+</div>
 
 
 
@@ -883,20 +985,23 @@ the fired event before triggering listeners.</p>
     
 
     
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="EventManager.js.html">EventManager.js</a>, <a href="EventManager.js.html#line178">line 178</a>
-    </li></ul></dd>
     
 
     
 
     
 
+    
+        <p class="tag-source">
+            <a href="EventManager.js.html" class="button">View Source</a>
+            <span>
+                <a href="EventManager.js.html">EventManager.js</a>, <a href="EventManager.js.html#line178">line 178</a>
+            </span>
+        </p>
     
 </dl>
+
+
 
 
 
@@ -918,7 +1023,8 @@ the fired event before triggering listeners.</p>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>class Button extends Component {
+    
+        <pre class="prettyprint"><code>class Button extends Component {
   constructor(element) {
     super(element)
     this.onClickEventManager = EventManager.createDirectProxyFor(
@@ -936,29 +1042,38 @@ button.onClick( () => {
   // whatever the button should do
   // noting that preventDefault has been called
 })</code></pre>
+    
 
 
+</div>
+            
+                <div class="member">
 
+
+    
+    <h4 class="name" id=".defineEvents">
+        <a class="href-link" href="#.defineEvents">#</a>
         
             
-
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                defineEvents<span class="signature">(object, &hellip;names)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
     
 
     
-    <h4 class="name" id=".defineEvents"><span class="type-signature">(static) </span>defineEvents<span class="signature">(object, &hellip;names)</span><span class="type-signature"></span></h4>
     
-
-    
-    <p class="summary">Shortcut to creating event managers explcitly.</p>
-    
-
-
-
-<div class="description">
-    <p>Shortcut to creating event managers explcitly.</p>
+    <div class="description">
+        <p>Shortcut to creating event managers explcitly.</p>
 <p>Ideally used in the constructor of your class to define all
 the events that your class will broadcast.</p>
-</div>
+    </div>
+    
 
 
 
@@ -970,192 +1085,206 @@ the events that your class will broadcast.</p>
 
     <h5>Parameters:</h5>
     
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-        <th>Attributes</th>
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
+<div class="table-container">
+    <table class="params table">
+        <thead>
         <tr>
             
-                <td class="name"><code>object</code></td>
+            <th>Name</th>
             
 
-            <td class="type">
-            
-                
-<span class="param-type">Object</span>
-
+            <th>Type</th>
 
             
-            </td>
-
-            
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
+            <th>Attributes</th>
             
 
             
 
-            <td class="description last"><p>the object on which the events will be defined</p></td>
+            <th class="last">Description</th>
         </tr>
+        </thead>
 
-    
-
-        <tr>
-            
-                <td class="name"><code>names</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
+        <tbody>
+        
 
             
-            </td>
+<tr class="deep-level-0">
+  
+      <td class="name"><code>object</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">Object</code>
+
+
+  
+  </td>
+
+  
+      <td class="attributes">
+      
+
+      
+
+      
+      </td>
+  
+
+  
+
+  <td class="description last"><p>the object on which the events will be defined</p></td>
+</tr>
+
+
+        
 
             
-                <td class="attributes">
-                
+<tr class="deep-level-0">
+  
+      <td class="name"><code>names</code></td>
+  
 
-                
+  <td class="type">
+  
+      
+<code class="param-type">String</code>
 
-                
-                    &lt;repeatable><br>
-                
-                </td>
-            
 
-            
+  
+  </td>
 
-            <td class="description last"><p>a list of names of events.  For each name, this method will define an EventManager
+  
+      <td class="attributes">
+      
+
+      
+
+      
+          &lt;repeatable><br>
+      
+      </td>
+  
+
+  
+
+  <td class="description last"><p>a list of names of events.  For each name, this method will define an EventManager
 for that named event, and then a method on«name» (where name is upper-case camelized)
 that will register the passed listener for that event.  To fire an event, use
 the EventNamager. For example, a name like &quot;formSubmitted&quot; would create the method <code>onFormSubmitted</code> which
 you could trigger by calling <code>this.formSubmittedEventManager.fireEvent()</code></p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="EventManager.js.html">EventManager.js</a>, <a href="EventManager.js.html#line98">line 98</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+</tr>
 
 
         
-    
-
-    
-        <h3 class="subsection-title">Type Definitions</h3>
-
-        
-                
-
-    
-
-    
-    <h4 class="name" id="~listener"><span class="type-signature"></span>listener<span class="signature">()</span><span class="type-signature"></span></h4>
-    
-
-    
-    <p class="summary">Called with whatever arguments were given to fireEvent.</p>
-    
-
-
-
-<div class="description">
-    <p>Called with whatever arguments were given to fireEvent.</p>
+        </tbody>
+    </table>
 </div>
 
 
 
 
 
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="EventManager.js.html" class="button">View Source</a>
+            <span>
+                <a href="EventManager.js.html">EventManager.js</a>, <a href="EventManager.js.html#line98">line 98</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+            </div>
+        </div>
+    
+
+    
+        <div class='vertical-section'>
+            <h1>Type Definitions</h1>
+            <div class="members">
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="~listener">
+        <a class="href-link" href="#~listener">#</a>
+        
+        <span class="code-name">
+            
+                listener<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Called with whatever arguments were given to fireEvent.</p>
+    </div>
+    
+
+
+
+
+
 
 
 
@@ -1189,18 +1318,19 @@ you could trigger by calling <code>this.formSubmittedEventManager.fireEvent()</c
     
 
     
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="EventManager.js.html">EventManager.js</a>, <a href="EventManager.js.html#line131">line 131</a>
-    </li></ul></dd>
     
 
     
 
     
 
+    
+        <p class="tag-source">
+            <a href="EventManager.js.html" class="button">View Source</a>
+            <span>
+                <a href="EventManager.js.html">EventManager.js</a>, <a href="EventManager.js.html#line131">line 131</a>
+            </span>
+        </p>
     
 </dl>
 
@@ -1223,7 +1353,11 @@ you could trigger by calling <code>this.formSubmittedEventManager.fireEvent()</c
 
 
 
+
+</div>
             
+            </div>
+        </div>
     
 
     
@@ -1234,19 +1368,28 @@ you could trigger by calling <code>this.formSubmittedEventManager.fireEvent()</c
 
 
 
-</div>
-
-<nav>
-    <h2><a href="index.html">Home</a></h2><h3>Externals</h3><ul><li><a href="external-Element.html">Element</a></li><li><a href="external-Node.html">Node</a></li><li><a href="external-Performance.html">Performance</a></li><li><a href="external-Promise.html">Promise</a></li></ul><h3>Classes</h3><ul><li><a href="Animator.html">Animator</a></li><li><a href="AnimatorPreferences.html">AnimatorPreferences</a></li><li><a href="Body.html">Body</a></li><li><a href="BrutalJSBase.html">BrutalJSBase</a></li><li><a href="CalendarDate.html">CalendarDate</a></li><li><a href="Component.html">Component</a></li><li><a href="Env.html">Env</a></li><li><a href="EventAlreadyDefined.html">EventAlreadyDefined</a></li><li><a href="EventManager.html">EventManager</a></li><li><a href="HumanizedString.html">HumanizedString</a></li><li><a href="LogViewer.html">LogViewer</a></li><li><a href="Runtime.html">Runtime</a></li><li><a href="Template.html">Template</a></li><li><a href="TypeOf.html">TypeOf</a></li><li><a href="WrapsElement.html">WrapsElement</a></li></ul><h3>Mixins</h3><ul><li><a href="LogMixin.html">LogMixin</a></li></ul>
-</nav>
-
-<br class="clear">
-
-<footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Mon Sep 04 2023 19:22:13 GMT+0000 (Coordinated Universal Time)
-</footer>
-
-<script> prettyPrint(); </script>
+            </div>
+            
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.2</a></p>
+                    <p class="sidebar-created-by">
+                        <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by
+                        <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+                    </p>
+                </div>
+            </footer>
+            
+        </div>
+        <div id="side-nav" class="side-nav">
+        </div>
+    </div>
+<script src="scripts/app.min.js"></script>
+<script>PR.prettyPrint();</script>
 <script src="scripts/linenumber.js"> </script>
+
+<script src="scripts/search.js"> </script>
+
+
 </body>
 </html>

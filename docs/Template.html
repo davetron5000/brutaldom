@@ -1,25 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="utf-8">
-    <title>JSDoc: Class: Template</title>
 
-    <script src="scripts/prettify/prettify.js"> </script>
-    <script src="scripts/prettify/lang-css.js"> </script>
-    <!--[if lt IE 9]>
-      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
-    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> Template</title>
+
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="./build/entry.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+  <link type="text/css" rel="stylesheet" href="">
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  
 </head>
 
-<body>
 
-<div id="main">
 
-    <h1 class="page-title">Class: Template</h1>
-
+<body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
     
+
+<div class="top-nav">
+    <div class="inner">
+        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+            
+            
+        </div>
+        <div class="menu">
+            
+            <div class="navigation">
+                <a
+                    href="index.html"
+                    class="link"
+                >
+                    Documentation
+                </a>
+                
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="main">
+        <div
+            class="sidebar "
+            id="sidebarNav"
+        >
+            
+                <div class="search-wrapper">
+                    <input id="search" type="text" placeholder="Search docs..." class="input">
+                </div>
+            
+            <nav>
+                
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Externals</h3><ul><li><a href="external-Element.html">Element</a></li><li><a href="external-Node.html">Node</a></li><li><a href="external-Performance.html">Performance</a></li><li><a href="external-Promise.html">Promise</a></li></ul><h3>Classes</h3><ul><li><a href="Animator.html">Animator</a></li><li><a href="AnimatorPreferences.html">AnimatorPreferences</a></li><li><a href="Body.html">Body</a></li><li><a href="BrutalJSBase.html">BrutalJSBase</a></li><li><a href="CalendarDate.html">CalendarDate</a></li><li><a href="Component.html">Component</a></li><li><a href="Env.html">Env</a></li><li><a href="EventAlreadyDefined.html">EventAlreadyDefined</a></li><li><a href="EventManager.html">EventManager</a></li><li><a href="HumanizedString.html">HumanizedString</a></li><li><a href="LogViewer.html">LogViewer</a></li><li><a href="Runtime.html">Runtime</a></li><li><a href="Template.html">Template</a></li><li><a href="TypeOf.html">TypeOf</a></li><li><a href="WrapsElement.html">WrapsElement</a></li></ul><h3>Mixins</h3><ul><li><a href="LogMixin.html">LogMixin</a></li></ul></div>
+                
+            </nav>
+        </div>
+        <div class="core" id="main-content-wrapper">
+            <div class="content">
+                <header class="page-title">
+                    <p>Class</p>
+                    <h1>Template</h1>
+                </header>
+                
 
 
 
@@ -43,25 +104,34 @@ row inserted.  This class helps manage that process.</p></div>
     <div class="container-overview">
     
         
-
-    
-    <h2>Constructor</h2>
-    
-
-    
-    <h4 class="name" id="Template"><span class="type-signature"></span>new Template<span class="signature">(element)</span><span class="type-signature"></span></h4>
-    
-
-    
-    <p class="summary">Create a Template with the given element.</p>
-    
+            <div class='vertical-section'>
+                <div class="members">
+                    <div class="member">
+                        <div class=name>
+                            <span class="tag">Constructor</span>
+                        </div>
+                        
 
 
+    
+    <h4 class="name" id="Template">
+        <a class="href-link" href="#Template">#</a>
+        
+        <span class="code-name">
+            
+                new Template<span class="signature">(element)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
 
-<div class="description">
-    <p>Create a Template with the given element. Note that the element <em>must</em>
+    
+    
+    <div class="description">
+        <p>Create a Template with the given element. Note that the element <em>must</em>
 be a <code>template</code> element.</p>
-</div>
+    </div>
+    
 
 
 
@@ -73,52 +143,54 @@ be a <code>template</code> element.</p>
 
     <h5>Parameters:</h5>
     
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
+<div class="table-container">
+    <table class="params table">
+        <thead>
         <tr>
             
-                <td class="name"><code>element</code></td>
+            <th>Name</th>
             
 
-            <td class="type">
-            
-                
-<span class="param-type"><a href="external-Element.html">external:Element</a></span>
-
-
-            
-            </td>
+            <th>Type</th>
 
             
 
             
 
-            <td class="description last"><p>Element that this will wrap. It must be a <code>template</code> element.</p></td>
+            <th class="last">Description</th>
         </tr>
+        </thead>
 
-    
-    </tbody>
-</table>
+        <tbody>
+        
 
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>element</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type"><a href="external-Element.html">external:Element</a></code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>Element that this will wrap. It must be a <code>template</code> element.</p></td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
 
 
 
@@ -149,18 +221,19 @@ be a <code>template</code> element.</p>
     
 
     
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Template.js.html">Template.js</a>, <a href="Template.js.html#line11">line 11</a>
-    </li></ul></dd>
     
 
     
 
     
 
+    
+        <p class="tag-source">
+            <a href="Template.js.html" class="button">View Source</a>
+            <span>
+                <a href="Template.js.html">Template.js</a>, <a href="Template.js.html#line11">line 11</a>
+            </span>
+        </p>
     
 </dl>
 
@@ -183,9 +256,15 @@ be a <code>template</code> element.</p>
 
 
 
+
+
+                    </div>
+                </div>
+            </div>
+        
     
     </div>
-
+    
     
 
     
@@ -201,27 +280,32 @@ be a <code>template</code> element.</p>
     
 
     
-        <h3 class="subsection-title">Methods</h3>
-
-        
+        <div class='vertical-section'>
+            <h1>Methods</h1>
+            <div class="members">
             
+                <div class="member">
 
+
+    
+    <h4 class="name" id="newNode">
+        <a class="href-link" href="#newNode">#</a>
+        
+        <span class="code-name">
+            
+                newNode<span class="signature">(options)</span><span class="type-signature"> &rarr; {<a href="external-Node.html">external:Node</a>}</span>
+            
+        </span>
+    </h4>
     
 
     
-    <h4 class="name" id="newNode"><span class="type-signature"></span>newNode<span class="signature">(options)</span><span class="type-signature"> &rarr; {<a href="external-Node.html">external:Node</a>}</span></h4>
     
-
-    
-    <p class="summary">Create a new <code>Node</code> based on this template.</p>
-    
-
-
-
-<div class="description">
-    <p>Create a new <code>Node</code> based on this template. The new node will
+    <div class="description">
+        <p>Create a new <code>Node</code> based on this template. The new node will
 optionally have any slots it contains filled with values. This Node can be inserted into the DOM.</p>
-</div>
+    </div>
+    
 
 
 
@@ -233,101 +317,80 @@ optionally have any slots it contains filled with values. This Node can be inser
 
     <h5>Parameters:</h5>
     
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
+<div class="table-container">
+    <table class="params table">
+        <thead>
         <tr>
             
-                <td class="name"><code>options</code></td>
+            <th>Name</th>
             
 
-            <td class="type">
-            
-                
-<span class="param-type">Object</span>
-
-
-            
-            </td>
+            <th>Type</th>
 
             
 
             
 
-            <td class="description last">
-                <h6>Properties</h6>
-                
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>fillSlots</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Object</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>if present, this is an object where the property names are assumed to be slots with that name and the values are to be set as the innerText of the slot.  Each element of this object <em>must</em> be a slot inside the template. There can be more than one slot with any name and all will be filled in.</p></td>
+            <th class="last">Description</th>
         </tr>
+        </thead>
 
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>options</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">Object</code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"></td>
+</tr>
+
+  
+  
     
-    </tbody>
-</table>
+<tr class="deep-level-1">
+  
+      <td class="name"><code>fillSlots</code></td>
+  
 
-            </td>
-        </tr>
+  <td class="type">
+  
+      
+<code class="param-type">Object</code>
 
-    
-    </tbody>
-</table>
 
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>if present, this is an object where the property names are assumed to be slots with that name and the values are to be set as the innerText of the slot.  Each element of this object <em>must</em> be a slot inside the template. There can be more than one slot with any name and all will be filled in.</p></td>
+</tr>
+
+  
+
+
+        
+        </tbody>
+    </table>
+</div>
 
 
 
@@ -358,18 +421,19 @@ optionally have any slots it contains filled with values. This Node can be inser
     
 
     
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Template.js.html">Template.js</a>, <a href="Template.js.html#line34">line 34</a>
-    </li></ul></dd>
     
 
     
 
     
 
+    
+        <p class="tag-source">
+            <a href="Template.js.html" class="button">View Source</a>
+            <span>
+                <a href="Template.js.html">Template.js</a>, <a href="Template.js.html#line34">line 34</a>
+            </span>
+        </p>
     
 </dl>
 
@@ -387,34 +451,41 @@ optionally have any slots it contains filled with values. This Node can be inser
 
 
 
-<h5>Returns:</h5>
 
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>a new Node, filled with <code>options.fillSlots</code>, ready to be inserted into the DOM.</p></div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
         
-<div class="param-desc">
-    <p>a new Node, filled with <code>options.fillSlots</code>, ready to be inserted into the DOM.</p>
+<code class="param-type"><a href="external-Node.html">external:Node</a></code>
+
+
+    </div>
+    
 </div>
 
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type"><a href="external-Node.html">external:Node</a></span>
-
-
-    </dd>
-</dl>
-
-    
+                
+        </div>
+    </div>
 
 
 
 
-
-        
+</div>
+            
+            </div>
+        </div>
     
 
     
@@ -427,19 +498,28 @@ optionally have any slots it contains filled with values. This Node can be inser
 
 
 
-</div>
-
-<nav>
-    <h2><a href="index.html">Home</a></h2><h3>Externals</h3><ul><li><a href="external-Element.html">Element</a></li><li><a href="external-Node.html">Node</a></li><li><a href="external-Performance.html">Performance</a></li><li><a href="external-Promise.html">Promise</a></li></ul><h3>Classes</h3><ul><li><a href="Animator.html">Animator</a></li><li><a href="AnimatorPreferences.html">AnimatorPreferences</a></li><li><a href="Body.html">Body</a></li><li><a href="BrutalJSBase.html">BrutalJSBase</a></li><li><a href="CalendarDate.html">CalendarDate</a></li><li><a href="Component.html">Component</a></li><li><a href="Env.html">Env</a></li><li><a href="EventAlreadyDefined.html">EventAlreadyDefined</a></li><li><a href="EventManager.html">EventManager</a></li><li><a href="HumanizedString.html">HumanizedString</a></li><li><a href="LogViewer.html">LogViewer</a></li><li><a href="Runtime.html">Runtime</a></li><li><a href="Template.html">Template</a></li><li><a href="TypeOf.html">TypeOf</a></li><li><a href="WrapsElement.html">WrapsElement</a></li></ul><h3>Mixins</h3><ul><li><a href="LogMixin.html">LogMixin</a></li></ul>
-</nav>
-
-<br class="clear">
-
-<footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Mon Sep 04 2023 19:22:13 GMT+0000 (Coordinated Universal Time)
-</footer>
-
-<script> prettyPrint(); </script>
+            </div>
+            
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.2</a></p>
+                    <p class="sidebar-created-by">
+                        <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by
+                        <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+                    </p>
+                </div>
+            </footer>
+            
+        </div>
+        <div id="side-nav" class="side-nav">
+        </div>
+    </div>
+<script src="scripts/app.min.js"></script>
+<script>PR.prettyPrint();</script>
 <script src="scripts/linenumber.js"> </script>
+
+<script src="scripts/search.js"> </script>
+
+
 </body>
 </html>
