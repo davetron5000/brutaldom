@@ -5,6 +5,8 @@
   "author": "David Copeland",
   "license": "Hippocratic-2.1",
   "devDependencies": {
+    "esbuild": "^0.19.2",
+    "http-server": "^14.1.1",
     "jsdoc": "^4.0.2"
   }
 }

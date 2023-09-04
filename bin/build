@@ -1,0 +1,25 @@
+#!/bin/sh
+
+set -e
+
+if [ -z "$1" ] || [ "$1" = "help" ] || [ "$1" = "-h" ]; then
+  echo "usage: $0 [dev|test|prod]"
+  exit 1
+fi
+
+APP_VERSION=$(git rev-parse HEAD)
+
+if [ "$1" = "test" ]; then
+  NODE_PATH=./src/js/ npx esbuild  \
+    --bundle  \
+    --define:ENV=\"test\" \
+    --define:APP_VERSION=\"${APP_VERSION}\" \
+    --keep-names \
+    --outfile=test/serve/test.js \
+    --sourcemap \
+    test/test.js
+  cp test/index.html test/serve
+else
+  echo "Not implemented"
+  exit 1
+fi

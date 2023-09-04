@@ -1,0 +1,6 @@
+#!/bin/sh
+
+set -e
+
+bin/build test
+npx http-server test/serve -p 6501 -c-1
