@@ -1,7 +1,18 @@
 import BrutalJSBase        from "./BrutalJSBase"
 import HumanizedString     from "./HumanizedString"
-import TypeOf              from "./ypeOf"
+import TypeOf              from "./TypeOf"
 import EventAlreadyDefined from "./EventAlreadyDefined"
+
+const debounce = (callback, wait) => {
+  let timeout;
+  return (...args) => {
+    const context = this;
+    clearTimeout(timeout);
+    timeout = setTimeout(() => {
+      callback.apply(context, args)
+    }, wait);
+  };
+}
 
 /**
  * Defines an event and handles setting up methods needed for an object o
@@ -129,6 +140,20 @@ class EventManager extends BrutalJSBase {
   removeListener(listener) { return this.listeners.delete(listener) }
 
   /**
+   * Modifies this EventManager to debounce its fireEvent methods by timeoutMS milliseconds.
+   *
+   * @param {int} timeoutMS - Milliseconds to debounce the fireEvent method. If 0, debouncing is removed.
+   */
+  debounce(timeoutMS) {
+    if (timeoutMS == 0) {
+      delete this._debouncedFireEvent
+    }
+    else {
+      this._debouncedFireEvent = debounce(this._fireEvent.bind(this), timeoutMS)
+    }
+  }
+
+  /**
    * Called with whatever arguments were given to fireEvent.
    * @callback EventManager~listener
    */
@@ -138,6 +163,16 @@ class EventManager extends BrutalJSBase {
    * @param {...Object} args - any args relevant to the event. You should document what these are.
    */
   fireEvent(...args) {
+    if (this._debouncedFireEvent) {
+      this.event("usingDebounced",{})
+      this._debouncedFireEvent(...args)
+    }
+    else {
+      this._fireEvent(...args)
+    }
+  }
+
+  _fireEvent(...args) {
     this.methodStart("fireEvent", { listeners: this.listeners.size, eventName: this.eventName, objectClass: this.objectClass })
     this.listeners.forEach( (listener) => {
       listener(...args)
