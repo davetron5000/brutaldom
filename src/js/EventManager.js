@@ -129,13 +129,15 @@ class EventManager extends BrutalJSBase {
 
   /** Adds a listener to this event. 
    *
-   * @param {EventManager~listener} listener to be called when the event fires.
+   * @param {EventManager~listener|EventManager} listener to be called when the event fires. If the listener is an instance of an
+   * EventManager, that manager's `fireEvent` method is called when this manager's is fired. This makes it simpler to proxy
+   * events.
    */
   addListener(listener) { this.listeners.add(listener) }
 
   /** Remove a listener from this event. 
    *
-   * @param {EventManager~listener} listener to be called when the event fires.
+   * @param {EventManager~listener|EventManager} listener to be called when the event fires.
    */
   removeListener(listener) { return this.listeners.delete(listener) }
 
@@ -175,7 +177,12 @@ class EventManager extends BrutalJSBase {
   _fireEvent(...args) {
     this.methodStart("fireEvent", { listeners: this.listeners.size, eventName: this.eventName, objectClass: this.objectClass })
     this.listeners.forEach( (listener) => {
-      listener(...args)
+      if (TypeOf.asString(listener) == "EventManager") {
+        listener.fireEvent(...args)
+      }
+      else {
+        listener(...args)
+      }
     })
     this.methodDone("fireEvent")
   }

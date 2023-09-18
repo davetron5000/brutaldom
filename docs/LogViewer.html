@@ -205,7 +205,9 @@ uses a PerformanceObserver to receive the messages.</p></div>
 
   <td class="description last"><p>Ignore log messages that don't match this context.  The special value &quot;ALL&quot; means to
 show all log messages.  Otherwise, this is used to filter messages that have both have details and have a logContext key
-in the details.  If the value of that key includes this value, the message is shown. Otherwise it is filtered out.</p></td>
+in the details.  If the value of that key includes this value, the message is shown. Otherwise it is filtered out.  Note
+that any class that mixes in the Log mixin can set its context for messages it logs by setting the logContext static
+property.  This is useful to tag a group of classes or module.</p></td>
 </tr>
 
   
@@ -435,7 +437,7 @@ are shown.</p></td>
         <p class="tag-source">
             <a href="LogViewer.js.html" class="button">View Source</a>
             <span>
-                <a href="LogViewer.js.html">LogViewer.js</a>, <a href="LogViewer.js.html#line185">line 185</a>
+                <a href="LogViewer.js.html">LogViewer.js</a>, <a href="LogViewer.js.html#line187">line 187</a>
             </span>
         </p>
     

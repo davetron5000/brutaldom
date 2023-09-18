@@ -256,7 +256,7 @@ of those events.</p></div>
         <p class="tag-source">
             <a href="EventManager.js.html" class="button">View Source</a>
             <span>
-                <a href="EventManager.js.html">EventManager.js</a>, <a href="EventManager.js.html#line84">line 84</a>
+                <a href="EventManager.js.html">EventManager.js</a>, <a href="EventManager.js.html#line95">line 95</a>
             </span>
         </p>
     
@@ -403,6 +403,9 @@ button.onClick( (event) => {
   
       
 <code class="param-type"><a href="EventManager.html#~listener">EventManager~listener</a></code>
+|
+
+<code class="param-type"><a href="EventManager.html">EventManager</a></code>
 
 
   
@@ -412,7 +415,9 @@ button.onClick( (event) => {
 
   
 
-  <td class="description last"><p>to be called when the event fires.</p></td>
+  <td class="description last"><p>to be called when the event fires. If the listener is an instance of an
+EventManager, that manager's <code>fireEvent</code> method is called when this manager's is fired. This makes it simpler to proxy
+events.</p></td>
 </tr>
 
 
@@ -460,7 +465,155 @@ button.onClick( (event) => {
         <p class="tag-source">
             <a href="EventManager.js.html" class="button">View Source</a>
             <span>
-                <a href="EventManager.js.html">EventManager.js</a>, <a href="EventManager.js.html#line123">line 123</a>
+                <a href="EventManager.js.html">EventManager.js</a>, <a href="EventManager.js.html#line136">line 136</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="debounce">
+        <a class="href-link" href="#debounce">#</a>
+        
+        <span class="code-name">
+            
+                debounce<span class="signature">(timeoutMS)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Modifies this EventManager to debounce its fireEvent methods by timeoutMS milliseconds.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>timeoutMS</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">int</code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>Milliseconds to debounce the fireEvent method. If 0, debouncing is removed.</p></td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="EventManager.js.html" class="button">View Source</a>
+            <span>
+                <a href="EventManager.js.html">EventManager.js</a>, <a href="EventManager.js.html#line149">line 149</a>
             </span>
         </p>
     
@@ -620,7 +773,7 @@ button.onClick( (event) => {
         <p class="tag-source">
             <a href="EventManager.js.html" class="button">View Source</a>
             <span>
-                <a href="EventManager.js.html">EventManager.js</a>, <a href="EventManager.js.html#line140">line 140</a>
+                <a href="EventManager.js.html">EventManager.js</a>, <a href="EventManager.js.html#line167">line 167</a>
             </span>
         </p>
     
@@ -711,6 +864,9 @@ button.onClick( (event) => {
   
       
 <code class="param-type"><a href="EventManager.html#~listener">EventManager~listener</a></code>
+|
+
+<code class="param-type"><a href="EventManager.html">EventManager</a></code>
 
 
   
@@ -768,7 +924,7 @@ button.onClick( (event) => {
         <p class="tag-source">
             <a href="EventManager.js.html" class="button">View Source</a>
             <span>
-                <a href="EventManager.js.html">EventManager.js</a>, <a href="EventManager.js.html#line129">line 129</a>
+                <a href="EventManager.js.html">EventManager.js</a>, <a href="EventManager.js.html#line142">line 142</a>
             </span>
         </p>
     
@@ -995,7 +1151,7 @@ the fired event before triggering listeners.</p>
         <p class="tag-source">
             <a href="EventManager.js.html" class="button">View Source</a>
             <span>
-                <a href="EventManager.js.html">EventManager.js</a>, <a href="EventManager.js.html#line178">line 178</a>
+                <a href="EventManager.js.html">EventManager.js</a>, <a href="EventManager.js.html#line220">line 220</a>
             </span>
         </p>
     
@@ -1222,7 +1378,7 @@ you could trigger by calling <code>this.formSubmittedEventManager.fireEvent()</c
         <p class="tag-source">
             <a href="EventManager.js.html" class="button">View Source</a>
             <span>
-                <a href="EventManager.js.html">EventManager.js</a>, <a href="EventManager.js.html#line98">line 98</a>
+                <a href="EventManager.js.html">EventManager.js</a>, <a href="EventManager.js.html#line109">line 109</a>
             </span>
         </p>
     
@@ -1328,7 +1484,7 @@ you could trigger by calling <code>this.formSubmittedEventManager.fireEvent()</c
         <p class="tag-source">
             <a href="EventManager.js.html" class="button">View Source</a>
             <span>
-                <a href="EventManager.js.html">EventManager.js</a>, <a href="EventManager.js.html#line131">line 131</a>
+                <a href="EventManager.js.html">EventManager.js</a>, <a href="EventManager.js.html#line158">line 158</a>
             </span>
         </p>
     

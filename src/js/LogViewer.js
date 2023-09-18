@@ -142,7 +142,9 @@ class LogViewer { // DO NOT EXTEND BrutalJSBase
    * @param {Object} namedParams
    * @param {String} namedParams.logContext - Ignore log messages that don't match this context.  The special value "ALL" means to
    * show all log messages.  Otherwise, this is used to filter messages that have both have details and have a logContext key
-   * in the details.  If the value of that key includes this value, the message is shown. Otherwise it is filtered out.
+   * in the details.  If the value of that key includes this value, the message is shown. Otherwise it is filtered out.  Note
+   * that any class that mixes in the Log mixin can set its context for messages it logs by setting the logContext static
+   * property.  This is useful to tag a group of classes or module.
    * @param {String} namedParams.className - Filter for only messages from a certain class.  Like logContext, this works by matching
    * on the details value and the className key, which is set automatically by any class using the Log mixin.  The value "ALL" means
    * to shnow all classes.
