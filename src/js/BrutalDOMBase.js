@@ -6,10 +6,10 @@ import Log from "./Log"
  *
  * @mixes Log
  */
-class BrutalJSBase {
-  static logContext = "@brutaljs"
+class BrutalDOMBase {
+  static logContext = "brutaldom"
   constructor() {
     Log.mixin(this.constructor)
   }
 }
-export default BrutalJSBase
+export default BrutalDOMBase

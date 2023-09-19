@@ -70,7 +70,7 @@
             
             <nav>
                 
-                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Externals</h3><ul><li><a href="external-Element.html">Element</a></li><li><a href="external-Node.html">Node</a></li><li><a href="external-Performance.html">Performance</a></li><li><a href="external-Promise.html">Promise</a></li></ul><h3>Classes</h3><ul><li><a href="Animator.html">Animator</a></li><li><a href="AnimatorPreferences.html">AnimatorPreferences</a></li><li><a href="Body.html">Body</a></li><li><a href="BrutalJSBase.html">BrutalJSBase</a></li><li><a href="CalendarDate.html">CalendarDate</a></li><li><a href="Checkbox.html">Checkbox</a></li><li><a href="Component.html">Component</a></li><li><a href="Env.html">Env</a></li><li><a href="EventAlreadyDefined.html">EventAlreadyDefined</a></li><li><a href="EventManager.html">EventManager</a></li><li><a href="HumanizedString.html">HumanizedString</a></li><li><a href="Link.html">Link</a></li><li><a href="LogViewer.html">LogViewer</a></li><li><a href="RadioButtons.html">RadioButtons</a></li><li><a href="Runtime.html">Runtime</a></li><li><a href="Select.html">Select</a></li><li><a href="Template.html">Template</a></li><li><a href="TypeOf.html">TypeOf</a></li><li><a href="WrapsElement.html">WrapsElement</a></li></ul><h3>Mixins</h3><ul><li><a href="LogMixin.html">LogMixin</a></li></ul></div>
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Externals</h3><ul><li><a href="external-Element.html">Element</a></li><li><a href="external-Node.html">Node</a></li><li><a href="external-Performance.html">Performance</a></li><li><a href="external-Promise.html">Promise</a></li></ul><h3>Classes</h3><ul><li><a href="Animator.html">Animator</a></li><li><a href="AnimatorPreferences.html">AnimatorPreferences</a></li><li><a href="Body.html">Body</a></li><li><a href="BrutalDOMBase.html">BrutalDOMBase</a></li><li><a href="CalendarDate.html">CalendarDate</a></li><li><a href="Checkbox.html">Checkbox</a></li><li><a href="Component.html">Component</a></li><li><a href="Env.html">Env</a></li><li><a href="EventAlreadyDefined.html">EventAlreadyDefined</a></li><li><a href="EventManager.html">EventManager</a></li><li><a href="HumanizedString.html">HumanizedString</a></li><li><a href="Link.html">Link</a></li><li><a href="LogViewer.html">LogViewer</a></li><li><a href="RadioButtons.html">RadioButtons</a></li><li><a href="Runtime.html">Runtime</a></li><li><a href="Select.html">Select</a></li><li><a href="Template.html">Template</a></li><li><a href="TypeOf.html">TypeOf</a></li><li><a href="WrapsElement.html">WrapsElement</a></li></ul><h3>Mixins</h3><ul><li><a href="LogMixin.html">LogMixin</a></li></ul></div>
                 
             </nav>
         </div>
@@ -104,12 +104,12 @@
 
 
     <section>
-        <article><h1 id="%40brutaljs---treat-your-web-pages-for-what-they-are%2C-not-what-you'd-like-them-to-be">@brutaljs - Treat your web pages for what they are, not what you'd like them to be</h1>
+        <article><h1 id="brutaldom---treat-your-web-pages-for-what-they-are%2C-not-what-you'd-like-them-to-be">brutaldom - Treat your web pages for what they are, not what you'd like them to be</h1>
 <p>A web page is a bunch of HTML and CSS. It can include JavaScript that responds to events.  The browser includes
 many powerful APIs for building just about any user interface you might need.  Thus, you can build whatever you
 need without any third party framework. But the browser's API is complex and contains many more features and
 behaviors than <em>your</em> app is going to need.</p>
-<p>The goal of BrutalJS is to provide tools to make it easier to model <em>your</em> app.  For example, you may have a button
+<p>The goal of BrutalDOM is to provide tools to make it easier to model <em>your</em> app.  For example, you may have a button
 that shows a message to the user when clicked.</p>
 <pre class="prettyprint source lang-html"><code>&lt;main>
   &lt;button>Show Message&lt;/button>
@@ -142,7 +142,7 @@ window.addEventListener(&quot;DOMContentLoaded&quot;,setup)
 <li>Your code has to check that the elements its going to decorate are there</li>
 <li>The actual behavior relies on magical strings like &quot;click&quot; and &quot;block&quot;. If you mis-type these, no error occurs, your app just doesn't work.</li>
 </ul>
-<p>While you could certainly use a big framework, BrutalJs provides classes to wrap DOM elements and use them as the basis for richer
+<p>While you could certainly use a big framework, BrutalDOM provides classes to wrap DOM elements and use them as the basis for richer
 components and objects that respond to the needs of your app.</p>
 <p>For example:</p>
 <pre class="prettyprint source lang-javascript"><code>window.addEventListener(&quot;DOMContentLoaded&quot;,() => {
@@ -153,10 +153,12 @@ components and objects that respond to the needs of your app.</p>
   button.onClick( () => message.show() )
 })
 </code></pre>
-<p>This is the core logic that glues together the app.  <code>Body</code> is provided by BrutalJS, but <code>Button</code> and <code>Message</code> are defined by you:</p>
-<pre class="prettyprint source lang-javascript"><code>class Button extends Component {
-  constructor(element) {
-    super(element)
+<p>This is the core logic that glues together the app.  <code>Body</code> is provided by BrutalDOM, but <code>Button</code> and <code>Message</code> are defined by you.  Before we see those, note that it's a bit more clear what does what.  When the button is clicked, we show the message.</p>
+<p>Here's <code>Button</code></p>
+<pre class="prettyprint source lang-javascript"><code>import { Component } from &quot;brutaldom&quot;
+
+class Button extends Component {
+  whenCreated() {
     EventManager.defineEvents(this, &quot;click&quot;)
     this.element.addEventListener(&quot;click&quot;, (event) => {
       event.preventDefault()
@@ -164,12 +166,47 @@ components and objects that respond to the needs of your app.</p>
     })
   }
 }
-
-class Message extends Component {
+</code></pre>
+<p>That…looks like regular JavaScript.  It's a bit more code, but all the stuff inside <code>whenCreated()</code> is providing a richer event
+than what yo uget with <code>addEventListener</code>.  It provides the <code>onClick</code> method. If you mis-type it, you'll get an error as opposed
+to silent failure.</p>
+<p><code>Message</code> doesn't need much logic and can use the builtin <code>Component</code>:</p>
+<pre class="prettyprint source lang-javascript"><code>class Message extends Component {
 }
 </code></pre>
-<p><code>Component</code> is provided by <code>BrutalJS</code> and has <code>hide</code> and <code>show</code> methods.  <code>EventManager</code> is provided by BrutalJS</p>
-<p>That's it!  It may seem like a bit more code, but this gives you the smallest possible footprint to use the underlying DOM APIs.</p></article>
+<p>This provides the <code>show()</code> method.</p>
+<p>This may seem like more code. For this simple case, it certainly is. But, when you have a complex UI that has a lot of events and
+interactions, it can be help to create high-level components that don't stray too much from the base APIs that are part othe
+browser.</p>
+<h2 id="general-overview">General Overview</h2>
+<p>Any DOM element you want to interact with should have a new class that extends <code>Component</code>.  That class is then designed by you
+to provide the exact API yoru app needs to interact with it.</p>
+<p>Here are the main features:</p>
+<ul>
+<li><strong>DOM element location without <code>if</code> statements.</strong> Every <code>Component</code> provides several methods to locate DOM elements. These
+methods will fail if the located element is not found (or if a collection of elements results in zero elements).  The <code>Body</code>
+class allows you to locate elements from the <code>&lt;body&gt;</code>.</li>
+<li><strong>Create Richer, Higher-Level Events.</strong>  <code>addEventListener</code> is fine, exception that it takes a string for the name and produces
+only an <code>Event</code>.  This means lots of translating concepts.  Instead, you can easily define events using methods—not strings—whose
+payloas, when fired, produce objects in your domain, or which trigger other events.</li>
+<li><strong>Templates and Slots without Shadow DOM</strong>.  The <code>&lt;template&gt;</code> and <code>&lt;slot&gt;</code> elements standard, but Web Components provides a
+somewhat clunky API to these. Plus, using Web Components with templates requires adopting the Shadown DOM which you may not want
+to do.  Instead, any <code>Component</code> can locate a <code>Template</code>, then create a <code>newNode</code> that fills in any <code>&lt;slot&gt;</code> elements with data
+you define in code.</li>
+<li><strong>Simplified Animation</strong>. The browser's animation API is powerful but flexible and clunky.  <code>Animator</code> allows a more
+streamlined way to animate between two sets of styles.  It can't handle every single animation need, but certainly handles most
+of them.</li>
+</ul>
+<h2 id="developing">Developing</h2>
+<p>To work on brutaldom:</p>
+<ol>
+<li>Install Docker</li>
+<li><code>dx/build</code></li>
+<li><code>dx/start</code></li>
+<li>In another terminal, <code>dx/exec bin/setup</code></li>
+<li>In another terminal, <code>dx/exec bin/test</code></li>
+<li>Open up the browser wherever the output of <code>bin/test</code> says to, and the tests will run in the browser.</li>
+</ol></article>
     </section>
 
 

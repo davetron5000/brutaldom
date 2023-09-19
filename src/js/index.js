@@ -31,7 +31,7 @@
 import Animator            from "./Animator"
 import AnimatorPreferences from "./AnimatorPreferences"
 import Body                from "./Body"
-import BrutalJSBase        from "./BrutalJSBase"
+import BrutalDOMBase       from "./BrutalDOMBase"
 import CalendarDate        from "./CalendarDate"
 import Checkbox            from "./Checkbox"
 import Component           from "./Component"
@@ -52,7 +52,7 @@ export {
   Animator,
   AnimatorPreferences,
   Body,
-  BrutalJSBase,
+  BrutalDOMBase,
   CalendarDate,
   Checkbox,
   Component,

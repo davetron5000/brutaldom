@@ -135,7 +135,7 @@ class MeasureType {
  *
  * @see external:PerformanceObserver
  */
-class LogViewer { // DO NOT EXTEND BrutalJSBase
+class LogViewer { // DO NOT EXTEND BrutalDOMBase
   /**
    * Create a LogViewer.
    *

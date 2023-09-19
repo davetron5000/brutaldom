@@ -1,4 +1,4 @@
-import BrutalJSBase        from "./BrutalJSBase"
+import BrutalDOMBase       from "./BrutalDOMBase"
 import HumanizedString     from "./HumanizedString"
 import TypeOf              from "./TypeOf"
 import EventAlreadyDefined from "./EventAlreadyDefined"
@@ -90,7 +90,7 @@ class EventDefinition {
  *   // do whatever on a click
  * })
  */
-class EventManager extends BrutalJSBase {
+class EventManager extends BrutalDOMBase {
 
   /** Shortcut to creating event managers explcitly.
    *

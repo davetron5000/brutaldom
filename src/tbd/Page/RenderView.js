@@ -1,7 +1,7 @@
-import BrutalJSBase from "../BrutalJSBase"
-import View         from "./View"
-import Layout       from "./Layout"
-import TypeOf       from "../JunkDrawer/TypeOf"
+import BrutalDOMBase from "../BrutalDOMBase"
+import View          from "./View"
+import Layout        from "./Layout"
+import TypeOf        from "../JunkDrawer/TypeOf"
 
 class RenderView extends BrutalJSBase {
   render(window) {

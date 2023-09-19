@@ -1,11 +1,11 @@
-# @brutaljs - Treat your web pages for what they are, not what you'd like them to be
+# brutaldom - Treat your web pages for what they are, not what you'd like them to be
 
 A web page is a bunch of HTML and CSS. It can include JavaScript that responds to events.  The browser includes
 many powerful APIs for building just about any user interface you might need.  Thus, you can build whatever you
 need without any third party framework. But the browser's API is complex and contains many more features and
 behaviors than *your* app is going to need.
 
-The goal of BrutalJS is to provide tools to make it easier to model *your* app.  For example, you may have a button
+The goal of BrutalDOM is to provide tools to make it easier to model *your* app.  For example, you may have a button
 that shows a message to the user when clicked.
 
 ```html
@@ -44,7 +44,7 @@ This is not so bad, however with more complicated needs, this can become quite d
 * Your code has to check that the elements its going to decorate are there
 * The actual behavior relies on magical strings like "click" and "block". If you mis-type these, no error occurs, your app just doesn't work.
 
-While you could certainly use a big framework, BrutalJs provides classes to wrap DOM elements and use them as the basis for richer
+While you could certainly use a big framework, BrutalDOM provides classes to wrap DOM elements and use them as the basis for richer
 components and objects that respond to the needs of your app.
 
 For example:
@@ -59,12 +59,12 @@ window.addEventListener("DOMContentLoaded",() => {
 })
 ```
 
-This is the core logic that glues together the app.  `Body` is provided by BrutalJS, but `Button` and `Message` are defined by you.  Before we see those, note that it's a bit more clear what does what.  When the button is clicked, we show the message.
+This is the core logic that glues together the app.  `Body` is provided by BrutalDOM, but `Button` and `Message` are defined by you.  Before we see those, note that it's a bit more clear what does what.  When the button is clicked, we show the message.
 
 Here's `Button`
 
 ```javascript
-import { Component } from "brutaljs"
+import { Component } from "brutaldom"
 
 class Button extends Component {
   whenCreated() {
@@ -117,7 +117,7 @@ of them.
 
 ## Developing
 
-To work on brutaljs:
+To work on brutaldom:
 
 1. Install Docker
 2. `dx/build`

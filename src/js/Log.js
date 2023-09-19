@@ -1,7 +1,7 @@
 import TypeOf from "./TypeOf"
 
 /**
- * Convienience methods for tracing/logging method behavior.  This is mixed-into BrutalJSBase so should
+ * Convienience methods for tracing/logging method behavior.  This is mixed-into BrutalDOMBase so should
  * be available to all your classes.  This ultimately wraps the Performance API for UserPerformance.
  *
  * The primary way to use this is to call methodStart, then event any number of times, and finally methodDone.  These methods
@@ -9,7 +9,7 @@ import TypeOf from "./TypeOf"
  * This allows you to build up context about what happened inside the method.
  *
  * @mixin
- * @see BrutalJSBase
+ * @see BrutalDOMBase
  * @see {external:Performance}
  */
 const LogMixin = {

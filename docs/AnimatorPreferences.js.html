@@ -72,7 +72,7 @@
             
             <nav>
                 
-                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Externals</h3><ul><li><a href="external-Element.html">Element</a></li><li><a href="external-Node.html">Node</a></li><li><a href="external-Performance.html">Performance</a></li><li><a href="external-Promise.html">Promise</a></li></ul><h3>Classes</h3><ul><li><a href="Animator.html">Animator</a></li><li><a href="AnimatorPreferences.html">AnimatorPreferences</a></li><li><a href="Body.html">Body</a></li><li><a href="BrutalJSBase.html">BrutalJSBase</a></li><li><a href="CalendarDate.html">CalendarDate</a></li><li><a href="Checkbox.html">Checkbox</a></li><li><a href="Component.html">Component</a></li><li><a href="Env.html">Env</a></li><li><a href="EventAlreadyDefined.html">EventAlreadyDefined</a></li><li><a href="EventManager.html">EventManager</a></li><li><a href="HumanizedString.html">HumanizedString</a></li><li><a href="Link.html">Link</a></li><li><a href="LogViewer.html">LogViewer</a></li><li><a href="RadioButtons.html">RadioButtons</a></li><li><a href="Runtime.html">Runtime</a></li><li><a href="Select.html">Select</a></li><li><a href="Template.html">Template</a></li><li><a href="TypeOf.html">TypeOf</a></li><li><a href="WrapsElement.html">WrapsElement</a></li></ul><h3>Mixins</h3><ul><li><a href="LogMixin.html">LogMixin</a></li></ul></div>
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Externals</h3><ul><li><a href="external-Element.html">Element</a></li><li><a href="external-Node.html">Node</a></li><li><a href="external-Performance.html">Performance</a></li><li><a href="external-Promise.html">Promise</a></li></ul><h3>Classes</h3><ul><li><a href="Animator.html">Animator</a></li><li><a href="AnimatorPreferences.html">AnimatorPreferences</a></li><li><a href="Body.html">Body</a></li><li><a href="BrutalDOMBase.html">BrutalDOMBase</a></li><li><a href="CalendarDate.html">CalendarDate</a></li><li><a href="Checkbox.html">Checkbox</a></li><li><a href="Component.html">Component</a></li><li><a href="Env.html">Env</a></li><li><a href="EventAlreadyDefined.html">EventAlreadyDefined</a></li><li><a href="EventManager.html">EventManager</a></li><li><a href="HumanizedString.html">HumanizedString</a></li><li><a href="Link.html">Link</a></li><li><a href="LogViewer.html">LogViewer</a></li><li><a href="RadioButtons.html">RadioButtons</a></li><li><a href="Runtime.html">Runtime</a></li><li><a href="Select.html">Select</a></li><li><a href="Template.html">Template</a></li><li><a href="TypeOf.html">TypeOf</a></li><li><a href="WrapsElement.html">WrapsElement</a></li></ul><h3>Mixins</h3><ul><li><a href="LogMixin.html">LogMixin</a></li></ul></div>
                 
             </nav>
         </div>
@@ -89,13 +89,13 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import BrutalJSBase from "./BrutalJSBase"
+            <pre class="prettyprint source linenums"><code>import BrutalDOMBase from "./BrutalDOMBase"
 
 /** Wrapper for preferences regarding animation.
  * @property {Boolean} immediateAlways - if true, the user's browser is set to reduce motion and thus animations should happen
  * immediately.
  */
-class AnimatorPreferences extends BrutalJSBase {
+class AnimatorPreferences extends BrutalDOMBase {
   constructor() {
     super()
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion)").matches

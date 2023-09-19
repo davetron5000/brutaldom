@@ -1,5 +1,5 @@
 import AnimatorPreferences from "./AnimatorPreferences"
-import BrutalJSBase        from "./BrutalJSBase"
+import BrutalDOMBase       from "./BrutalDOMBase"
 
 /**
  * Simplified abstraction over the Element.animate() method, useful for
@@ -11,7 +11,7 @@ import BrutalJSBase        from "./BrutalJSBase"
  * @see AnimatorPreferences
  *
  */
-class Animator extends BrutalJSBase {
+class Animator extends BrutalDOMBase {
   /**
    * Create an Animator that can animate the given element forward and backward.
    *

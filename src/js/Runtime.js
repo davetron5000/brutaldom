@@ -1,12 +1,12 @@
-import BrutalJSBase from "./BrutalJSBase"
-import Env          from "./Env"
+import BrutalDOMBase from "./BrutalDOMBase"
+import Env           from "./Env"
 
 /**
  * Provides access to information about the runtime of the app.
  *
  * @see Env
  */
-class Runtime extends BrutalJSBase {
+class Runtime extends BrutalDOMBase {
   /** @returns {Runtime} the only instance of this class */
   static instance() {
     if (!this._instance) {

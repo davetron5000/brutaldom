@@ -1,4 +1,4 @@
-import BrutalJSBase from "./BrutalJSBase"
+import BrutalDOMBase from "./BrutalDOMBase"
 /**
  * Base class for wrapping a DOM element to provide logic.  This is the core class of the library and 
  * provides a few convienience methods useful when interacting with the DOM.
@@ -6,9 +6,9 @@ import BrutalJSBase from "./BrutalJSBase"
  * In general, you likely want to use Component as your base class. See docs there.
  *
  * @see Component
- * @extends BrutalJSBase
+ * @extends BrutalDOMBase
  */
-class WrapsElement extends BrutalJSBase {
+class WrapsElement extends BrutalDOMBase {
   /**
    * Create the wrapped element.
    *
