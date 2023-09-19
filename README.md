@@ -1,4 +1,4 @@
-# brutaldom - Treat your web pages for what they are, not what you'd like them to be
+# BrutalDOM - Treat your web pages for what they are, not what you'd like them to be
 
 A web page is a bunch of HTML and CSS. It can include JavaScript that responds to events.  The browser includes
 many powerful APIs for building just about any user interface you might need.  Thus, you can build whatever you
@@ -104,13 +104,86 @@ Here are the main features:
 * **DOM element location without `if` statements.** Every `Component` provides several methods to locate DOM elements. These
 methods will fail if the located element is not found (or if a collection of elements results in zero elements).  The `Body`
 class allows you to locate elements from the `<body>`.
+
+  ```javascript
+  // BAD: if there is no button, you don't get notified.
+  //      if there is more than one match, you just get the first one
+  const button = document.querySelector("button[data-doit]")
+
+  const body = new Body()
+
+  // GOOD: If there is not exactly one match, you get an exception
+  const button = body.$selector("button[data-doit]")
+
+
+  // BAD: if there are no buttons, you get an empty list, which is likely 
+  //      not what you want
+  const buttons = document.querySelectorAll("button[data-doit]")
+
+  // GOOD: if there is not one or more matches, you get an exception
+  const buttons = body.$selectors("button[data-doit]")
+  ```
 * **Create Richer, Higher-Level Events.**  `addEventListener` is fine, exception that it takes a string for the name and produces
 only an `Event`.  This means lots of translating concepts.  Instead, you can easily define events using methods—not strings—whose
-payloas, when fired, produce objects in your domain, or which trigger other events.
+payloads, when fired, produce objects in your domain, or which trigger other events.
+
+  ```javascript
+  // BAD: "input" can be mistyped, plus you have to examine
+  //      .checked
+  checkboxElement.addEventListener("input", () => {
+    if (checkboxElement.checked) {
+      // do one thing
+    }
+    else {
+      // do another
+    }
+  })
+
+  // GOOD: explicit events, no introspection of the DOM element,
+  //       and no strings
+  checkbox = new Checkbox(checkboxElement)
+  checkbox.onChecked( () => {
+    // do on thing
+  })
+  checkbox.onChecked( () => {
+    // do another
+  })
+  ```
 * **Templates and Slots without Shadow DOM**.  The `<template>` and `<slot>` elements standard, but Web Components provides a
 somewhat clunky API to these. Plus, using Web Components with templates requires adopting the Shadown DOM which you may not want
 to do.  Instead, any `Component` can locate a `Template`, then create a `newNode` that fills in any `<slot>` elements with data
 you define in code.
+
+  ```
+  <div data-my-content>
+    <template>
+      <p><slot name="message"></slot></p>
+      <code><slot name="link"></slot></code>
+    </template>
+  </div>
+
+  ```
+  ```javascript
+  class MyContent extends Component {
+    wasCreated() {
+      this.messageTemplate = this.template()
+    }
+
+    addMessage(message, link) {
+      const node = this.messageTemplate.newNode({
+        fillSlots: {
+          message: message,
+          link: link,
+        }
+      })
+      this.element.appendChild(node)
+    }
+  }
+
+  const content = new MyContent(body.$("my-content"))
+  content.addMessage("Hello!","www.exampe.com")
+  content.addMessage("Hello Again!","www.exampe.net")
+  ```
 * **Simplified Animation**. The browser's animation API is powerful but flexible and clunky.  `Animator` allows a more
 streamlined way to animate between two sets of styles.  It can't handle every single animation need, but certainly handles most
 of them.
