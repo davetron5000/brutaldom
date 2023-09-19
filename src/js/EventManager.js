@@ -68,8 +68,7 @@ class EventDefinition {
  *
  * @example
  * class Button extends Component {
- *   constructor(element) {
- *     super(element)
+ *   wasCreated() {
  *     this.clickEventManager = new EventManager(this,"click")
  *     this.element.addEventListener("click", () => {
  *       this.clickEventManager.fireEvent()
@@ -81,8 +80,7 @@ class EventDefinition {
  *
  * @example
  * class Button extends Component {
- *   constructor(element) {
- *     super(element)
+ *   wasCreated() {
  *     EventManager.defineEvents(this, "click")
  *   }
  * }
@@ -222,7 +220,7 @@ class EventManager extends BrutalJSBase {
     const eventManager = eventDefinition.create()
     element.addEventListener(eventName, (event) => {
       event.preventDefault()
-      eventManager.fireEvent()
+      eventManager.fireEvent(event)
     })
   }
 }

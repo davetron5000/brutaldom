@@ -7,7 +7,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title> index.js</title>
+  <title> RadioButtons.js</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -80,7 +80,7 @@
             <div class="content">
                 <header class="page-title">
                     <p>Source</p>
-                    <h1>index.js</h1>
+                    <h1>RadioButtons.js</h1>
                 </header>
                 
 
@@ -89,77 +89,61 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>/**
- * The browser-provided Element.
- * @external Element
- * @see {@link http://developer.mozilla.org/en-US/docs/Web/API/Element}
- */
+            <pre class="prettyprint source linenums"><code>import Component    from "./Component"
+import EventManager from "./EventManager"
 
-/**
- * The browser-provided Node.
- * @external Node
- * @see {@link http://developer.mozilla.org/en-US/docs/Web/API/Node}
- */
+class RadioButton extends Component {
+  wasCreated() {
+    this.inputEventManager = EventManager.createDirectProxyFor(this, { element: this.element, eventName: "input" })
+  }
 
-/**
- * The Performance API.
- * @external Performance
- * @see {@link http://developer.mozilla.org/en-US/docs/Web/API/Performance}
- */
-
-/**
- * The PerformanceObserver API.
- * @external Performance
- * @see {@link http://developer.mozilla.org/en-US/docs/Web/API/PerformanceObserver}
- */
-
-/**
- * Browser-provided Promise
- * @external Promise
- * @see {@link http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise}
- */
-
-import Animator            from "./Animator"
-import AnimatorPreferences from "./AnimatorPreferences"
-import Body                from "./Body"
-import BrutalJSBase        from "./BrutalJSBase"
-import CalendarDate        from "./CalendarDate"
-import Checkbox            from "./Checkbox"
-import Component           from "./Component"
-import EventAlreadyDefined from "./EventAlreadyDefined"
-import EventManager        from "./EventManager"
-import HumanizedString     from "./HumanizedString"
-import Link                from "./Link"
-import Log                 from "./Log"
-import LogViewer           from "./LogViewer"
-import RadioButtons        from "./RadioButtons"
-import Runtime             from "./Runtime"
-import Select              from "./Select"
-import Template            from "./Template"
-import TypeOf              from "./TypeOf"
-import WrapsElement        from "./WrapsElement"
-
-export {
-  Animator,
-  AnimatorPreferences,
-  Body,
-  BrutalJSBase,
-  CalendarDate,
-  Checkbox,
-  Component,
-  EventAlreadyDefined,
-  EventManager,
-  HumanizedString,
-  Link,
-  Log,
-  LogViewer,
-  RadioButtons,
-  Runtime,
-  Select,
-  Template,
-  TypeOf,
-  WrapsElement,
+  get value() { return this.element.value }
+  set checked(val) { this.element.checked = val }
 }
+
+/** Wrapper around radio buttons that allows treating this like a select. Exposes onSelected that will
+ * include the selected value, as transformed by valueTransform.  A selected setter allows setting the selected value.
+ */
+class RadioButtons {
+
+  /**
+   * @param {NodeList} elements - the radio button elements.
+   * @param {RadioButtons~valueTransform} valueTransform - optional function to transform the value of the HTML element to a
+   * richer type.
+   */
+  constructor(elements,valueTransform) {
+    if (!valueTransform) {
+      valueTransform = (x) => x
+    }
+    EventManager.defineEvents(this,"selected")
+
+    this.radioButtons = Array.from(elements).map( (element) => {
+      const radioButton = new RadioButton(element)
+      radioButton.onInput( (event) => {
+        if (event.target.checked) {
+          this.selectedEventManager.fireEvent(valueTransform(event.target.value))
+        }
+      })
+      return radioButton
+    })
+  }
+
+  set selected(val) {
+    this.radioButtons.forEach( (radioButton) => {
+      if (radioButton.value == val) {
+        radioButton.checked = true
+      }
+      else {
+        radioButton.checked = false
+      }
+    })
+  }
+}
+/**
+ * Called to transform the radio button's value before the event manager is fired.
+ * @callback RadioButton~valueTransform
+ */
+export default RadioButtons
 </code></pre>
         </article>
     </section>

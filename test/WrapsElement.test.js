@@ -1,6 +1,35 @@
 import WrapsElement from "WrapsElement"
 import { Passed, Failed, Test, TestSuite, suite } from "./shared"
 
+class Extender extends WrapsElement {
+  wasCreated(arg1,arg2) {
+    console.log(`wasCreated called: ${arg1}, ${arg2}`)
+    this.arg1 = arg1
+    this.arg2 = arg2
+  }
+}
+suite(WrapsElement, { "constructor": "passes args" }, ({setup,test}) => {
+  setup( ({document}) => {
+    const element = document.createElement("div")
+    const innerElement = document.createElement("div")
+    innerElement.dataset.testid="1234"
+    document.body.appendChild(element)
+    element.appendChild(innerElement)
+    return { element }
+  })
+  test("subclass constructor passes args", ({document, element}) => {
+    const wrapped = new Extender(element,"foo",42)
+    if ( (wrapped.arg1 == "foo") && (wrapped.arg2 == 42)) {
+      return new Passed()
+    }
+    else {
+      return new Failed(
+        `Expected wrapped.arg1 to be 'foo' but was '${wrapped.arg1}; Expected wrapped.arg2 to be 42 but was ${wrapped.arg2}`
+      )
+    }
+  })
+})
+
 suite(WrapsElement, { "$selector": "exactly one element" }, ({setup,test}) => {
   setup( ({document}) => {
     const element = document.createElement("div")

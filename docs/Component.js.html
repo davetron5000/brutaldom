@@ -72,7 +72,7 @@
             
             <nav>
                 
-                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Externals</h3><ul><li><a href="external-Element.html">Element</a></li><li><a href="external-Node.html">Node</a></li><li><a href="external-Performance.html">Performance</a></li><li><a href="external-Promise.html">Promise</a></li></ul><h3>Classes</h3><ul><li><a href="Animator.html">Animator</a></li><li><a href="AnimatorPreferences.html">AnimatorPreferences</a></li><li><a href="Body.html">Body</a></li><li><a href="BrutalJSBase.html">BrutalJSBase</a></li><li><a href="CalendarDate.html">CalendarDate</a></li><li><a href="Component.html">Component</a></li><li><a href="Env.html">Env</a></li><li><a href="EventAlreadyDefined.html">EventAlreadyDefined</a></li><li><a href="EventManager.html">EventManager</a></li><li><a href="HumanizedString.html">HumanizedString</a></li><li><a href="LogViewer.html">LogViewer</a></li><li><a href="Runtime.html">Runtime</a></li><li><a href="Template.html">Template</a></li><li><a href="TypeOf.html">TypeOf</a></li><li><a href="WrapsElement.html">WrapsElement</a></li></ul><h3>Mixins</h3><ul><li><a href="LogMixin.html">LogMixin</a></li></ul></div>
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Externals</h3><ul><li><a href="external-Element.html">Element</a></li><li><a href="external-Node.html">Node</a></li><li><a href="external-Performance.html">Performance</a></li><li><a href="external-Promise.html">Promise</a></li></ul><h3>Classes</h3><ul><li><a href="Animator.html">Animator</a></li><li><a href="AnimatorPreferences.html">AnimatorPreferences</a></li><li><a href="Body.html">Body</a></li><li><a href="BrutalJSBase.html">BrutalJSBase</a></li><li><a href="CalendarDate.html">CalendarDate</a></li><li><a href="Checkbox.html">Checkbox</a></li><li><a href="Component.html">Component</a></li><li><a href="Env.html">Env</a></li><li><a href="EventAlreadyDefined.html">EventAlreadyDefined</a></li><li><a href="EventManager.html">EventManager</a></li><li><a href="HumanizedString.html">HumanizedString</a></li><li><a href="Link.html">Link</a></li><li><a href="LogViewer.html">LogViewer</a></li><li><a href="RadioButtons.html">RadioButtons</a></li><li><a href="Runtime.html">Runtime</a></li><li><a href="Select.html">Select</a></li><li><a href="Template.html">Template</a></li><li><a href="TypeOf.html">TypeOf</a></li><li><a href="WrapsElement.html">WrapsElement</a></li></ul><h3>Mixins</h3><ul><li><a href="LogMixin.html">LogMixin</a></li></ul></div>
                 
             </nav>
         </div>
@@ -94,7 +94,7 @@ import WrapsElement    from "./WrapsElement"
 
 
 /**
- * a Component wraps an external:Element that is intended to be some sort of interactive
+ * Wraps an external:Element that is intended to be some sort of interactive
  * part of the UI. A Component is the building block of any dynamic element
  * and the intention is that you provide an implementation that wraps a DOM
  * element with a vastly simplified API.
@@ -106,6 +106,31 @@ import WrapsElement    from "./WrapsElement"
  *
  * Most of the methods of this class are helpers to be used internally by subclasses.
  *
+ * Extendors should avoid creating a constructor and instead implement `wasCreated`. This
+ * method will be called by the constructor with whatever arguments are given to the constructor
+ * other than the wrapped element.  This is to make it easier to create a construction
+ * routine without having to remember to do `super(element)` every time.
+ *
+ * @example
+ * // Given this markup:
+ * // 
+ * //   &lt;header>
+ * //     &lt;h1>Message&lt;/h1>
+ * //     &lt;a href="#">Show / Hide&lt;/a>
+ * //   &lt;/header>
+ * // 
+ * // allow the href to show/hide the h1
+ *
+ * class HideableHeading extends Component {
+ *   wasCreated() {
+ *     this.title = this.$selector("h1")
+ *     this.link = new Link(this.$selector("a"))
+ *     this.link.onClick( () => this.title.toggle() )
+ *   }
+ * }
+ *
+ * const heading = new HideableHeading(body.$selector("header"))
+ *
  * @extends WrapsElement
  *
  */
@@ -115,10 +140,11 @@ class Component extends WrapsElement {
    * Creates a new component
    *
    * @param {external:Element} element - an Element from a web page that this component wraps
+   * @param {...args} args - passed to the super class and then to `wasCreated` if implemented.
    *
    */
-  constructor(element) {
-    super(element)
+  constructor(element, ...args) {
+    super(element, ...args)
     this.element = element
     this.hidden  = window.getComputedStyle(this.element).display === "none"
   }

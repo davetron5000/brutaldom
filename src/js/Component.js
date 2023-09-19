@@ -3,7 +3,7 @@ import WrapsElement    from "./WrapsElement"
 
 
 /**
- * a Component wraps an external:Element that is intended to be some sort of interactive
+ * Wraps an external:Element that is intended to be some sort of interactive
  * part of the UI. A Component is the building block of any dynamic element
  * and the intention is that you provide an implementation that wraps a DOM
  * element with a vastly simplified API.
@@ -15,6 +15,31 @@ import WrapsElement    from "./WrapsElement"
  *
  * Most of the methods of this class are helpers to be used internally by subclasses.
  *
+ * Extendors should avoid creating a constructor and instead implement `wasCreated`. This
+ * method will be called by the constructor with whatever arguments are given to the constructor
+ * other than the wrapped element.  This is to make it easier to create a construction
+ * routine without having to remember to do `super(element)` every time.
+ *
+ * @example
+ * // Given this markup:
+ * // 
+ * //   <header>
+ * //     <h1>Message</h1>
+ * //     <a href="#">Show / Hide</a>
+ * //   </header>
+ * // 
+ * // allow the href to show/hide the h1
+ *
+ * class HideableHeading extends Component {
+ *   wasCreated() {
+ *     this.title = this.$selector("h1")
+ *     this.link = new Link(this.$selector("a"))
+ *     this.link.onClick( () => this.title.toggle() )
+ *   }
+ * }
+ *
+ * const heading = new HideableHeading(body.$selector("header"))
+ *
  * @extends WrapsElement
  *
  */
@@ -24,10 +49,11 @@ class Component extends WrapsElement {
    * Creates a new component
    *
    * @param {external:Element} element - an Element from a web page that this component wraps
+   * @param {...args} args - passed to the super class and then to `wasCreated` if implemented.
    *
    */
-  constructor(element) {
-    super(element)
+  constructor(element, ...args) {
+    super(element, ...args)
     this.element = element
     this.hidden  = window.getComputedStyle(this.element).display === "none"
   }

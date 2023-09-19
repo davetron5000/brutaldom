@@ -70,7 +70,7 @@
             
             <nav>
                 
-                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Externals</h3><ul><li><a href="external-Element.html">Element</a></li><li><a href="external-Node.html">Node</a></li><li><a href="external-Performance.html">Performance</a></li><li><a href="external-Promise.html">Promise</a></li></ul><h3>Classes</h3><ul><li><a href="Animator.html">Animator</a></li><li><a href="AnimatorPreferences.html">AnimatorPreferences</a></li><li><a href="Body.html">Body</a></li><li><a href="BrutalJSBase.html">BrutalJSBase</a></li><li><a href="CalendarDate.html">CalendarDate</a></li><li><a href="Component.html">Component</a></li><li><a href="Env.html">Env</a></li><li><a href="EventAlreadyDefined.html">EventAlreadyDefined</a></li><li><a href="EventManager.html">EventManager</a></li><li><a href="HumanizedString.html">HumanizedString</a></li><li><a href="LogViewer.html">LogViewer</a></li><li><a href="Runtime.html">Runtime</a></li><li><a href="Template.html">Template</a></li><li><a href="TypeOf.html">TypeOf</a></li><li><a href="WrapsElement.html">WrapsElement</a></li></ul><h3>Mixins</h3><ul><li><a href="LogMixin.html">LogMixin</a></li></ul></div>
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Externals</h3><ul><li><a href="external-Element.html">Element</a></li><li><a href="external-Node.html">Node</a></li><li><a href="external-Performance.html">Performance</a></li><li><a href="external-Promise.html">Promise</a></li></ul><h3>Classes</h3><ul><li><a href="Animator.html">Animator</a></li><li><a href="AnimatorPreferences.html">AnimatorPreferences</a></li><li><a href="Body.html">Body</a></li><li><a href="BrutalJSBase.html">BrutalJSBase</a></li><li><a href="CalendarDate.html">CalendarDate</a></li><li><a href="Checkbox.html">Checkbox</a></li><li><a href="Component.html">Component</a></li><li><a href="Env.html">Env</a></li><li><a href="EventAlreadyDefined.html">EventAlreadyDefined</a></li><li><a href="EventManager.html">EventManager</a></li><li><a href="HumanizedString.html">HumanizedString</a></li><li><a href="Link.html">Link</a></li><li><a href="LogViewer.html">LogViewer</a></li><li><a href="RadioButtons.html">RadioButtons</a></li><li><a href="Runtime.html">Runtime</a></li><li><a href="Select.html">Select</a></li><li><a href="Template.html">Template</a></li><li><a href="TypeOf.html">TypeOf</a></li><li><a href="WrapsElement.html">WrapsElement</a></li></ul><h3>Mixins</h3><ul><li><a href="LogMixin.html">LogMixin</a></li></ul></div>
                 
             </nav>
         </div>
@@ -89,9 +89,9 @@
 
 <header>
     
-        <h2><span class="attribs"><span class="type-signature"></span></span>Component<span class="signature">(element)</span><span class="type-signature"></span></h2>
+        <h2><span class="attribs"><span class="type-signature"></span></span>Component<span class="signature">(element, &hellip;args)</span><span class="type-signature"></span></h2>
         
-            <div class="class-description"><p>a Component wraps an external:Element that is intended to be some sort of interactive
+            <div class="class-description"><p>Wraps an external:Element that is intended to be some sort of interactive
 part of the UI. A Component is the building block of any dynamic element
 and the intention is that you provide an implementation that wraps a DOM
 element with a vastly simplified API.</p>
@@ -99,7 +99,11 @@ element with a vastly simplified API.</p>
 If you have a button, you likely only care about the clicked event. You may
 also prefer to model enable/disable directly.  Thus, you'd extend <code>Component</code>
 and provide a <code>Button</code> class for how you want buttons to work.</p>
-<p>Most of the methods of this class are helpers to be used internally by subclasses.</p></div>
+<p>Most of the methods of this class are helpers to be used internally by subclasses.</p>
+<p>Extendors should avoid creating a constructor and instead implement <code>wasCreated</code>. This
+method will be called by the constructor with whatever arguments are given to the constructor
+other than the wrapped element.  This is to make it easier to create a construction
+routine without having to remember to do <code>super(element)</code> every time.</p></div>
         
     
 </header>
@@ -123,7 +127,7 @@ and provide a <code>Button</code> class for how you want buttons to work.</p>
         
         <span class="code-name">
             
-                new Component<span class="signature">(element)</span><span class="type-signature"></span>
+                new Component<span class="signature">(element, &hellip;args)</span><span class="type-signature"></span>
             
         </span>
     </h4>
@@ -157,6 +161,8 @@ and provide a <code>Button</code> class for how you want buttons to work.</p>
             <th>Type</th>
 
             
+            <th>Attributes</th>
+            
 
             
 
@@ -183,10 +189,53 @@ and provide a <code>Button</code> class for how you want buttons to work.</p>
   </td>
 
   
+      <td class="attributes">
+      
+
+      
+
+      
+      </td>
+  
 
   
 
   <td class="description last"><p>an Element from a web page that this component wraps</p></td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>args</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">args</code>
+
+
+  
+  </td>
+
+  
+      <td class="attributes">
+      
+
+      
+
+      
+          &lt;repeatable><br>
+      
+      </td>
+  
+
+  
+
+  <td class="description last"><p>passed to the super class and then to <code>wasCreated</code> if implemented.</p></td>
 </tr>
 
 
@@ -234,7 +283,7 @@ and provide a <code>Button</code> class for how you want buttons to work.</p>
         <p class="tag-source">
             <a href="Component.js.html" class="button">View Source</a>
             <span>
-                <a href="Component.js.html">Component.js</a>, <a href="Component.js.html#line21">line 21</a>
+                <a href="Component.js.html">Component.js</a>, <a href="Component.js.html#line46">line 46</a>
             </span>
         </p>
     
@@ -258,6 +307,30 @@ and provide a <code>Button</code> class for how you want buttons to work.</p>
 
 
 
+
+
+    <h5>Example</h5>
+    
+    
+        <pre class="prettyprint"><code>// Given this markup:
+// 
+//   &lt;header>
+//     &lt;h1>Message&lt;/h1>
+//     &lt;a href="#">Show / Hide&lt;/a>
+//   &lt;/header>
+// 
+// allow the href to show/hide the h1
+
+class HideableHeading extends Component {
+  wasCreated() {
+    this.title = this.$selector("h1")
+    this.link = new Link(this.$selector("a"))
+    this.link.onClick( () => this.title.toggle() )
+  }
+}
+
+const heading = new HideableHeading(body.$selector("header"))</code></pre>
+    
 
 
 
@@ -372,7 +445,7 @@ and provide a <code>Button</code> class for how you want buttons to work.</p>
         <p class="tag-source">
             <a href="WrapsElement.js.html" class="button">View Source</a>
             <span>
-                <a href="WrapsElement.js.html">WrapsElement.js</a>, <a href="WrapsElement.js.html#line111">line 111</a>
+                <a href="WrapsElement.js.html">WrapsElement.js</a>, <a href="WrapsElement.js.html#line115">line 115</a>
             </span>
         </p>
     
@@ -608,7 +681,7 @@ the selector is found. Given an argument with the number of elements found.</p><
         <p class="tag-source">
             <a href="WrapsElement.js.html" class="button">View Source</a>
             <span>
-                <a href="WrapsElement.js.html">WrapsElement.js</a>, <a href="WrapsElement.js.html#line56">line 56</a>
+                <a href="WrapsElement.js.html">WrapsElement.js</a>, <a href="WrapsElement.js.html#line60">line 60</a>
             </span>
         </p>
     
@@ -833,7 +906,7 @@ as the basis for the search.</p></td>
         <p class="tag-source">
             <a href="WrapsElement.js.html" class="button">View Source</a>
             <span>
-                <a href="WrapsElement.js.html">WrapsElement.js</a>, <a href="WrapsElement.js.html#line98">line 98</a>
+                <a href="WrapsElement.js.html">WrapsElement.js</a>, <a href="WrapsElement.js.html#line102">line 102</a>
             </span>
         </p>
     
@@ -977,7 +1050,7 @@ as the basis for the search.</p></td>
         <p class="tag-source">
             <a href="WrapsElement.js.html" class="button">View Source</a>
             <span>
-                <a href="WrapsElement.js.html">WrapsElement.js</a>, <a href="WrapsElement.js.html#line116">line 116</a>
+                <a href="WrapsElement.js.html">WrapsElement.js</a>, <a href="WrapsElement.js.html#line120">line 120</a>
             </span>
         </p>
     
@@ -1079,7 +1152,7 @@ as the basis for the search.</p></td>
         <p class="tag-source">
             <a href="WrapsElement.js.html" class="button">View Source</a>
             <span>
-                <a href="WrapsElement.js.html">WrapsElement.js</a>, <a href="WrapsElement.js.html#line121">line 121</a>
+                <a href="WrapsElement.js.html">WrapsElement.js</a>, <a href="WrapsElement.js.html#line125">line 125</a>
             </span>
         </p>
     
@@ -1180,7 +1253,7 @@ the CSS display property.  If an animator is configured, it is used instead.</p>
         <p class="tag-source">
             <a href="Component.js.html" class="button">View Source</a>
             <span>
-                <a href="Component.js.html">Component.js</a>, <a href="Component.js.html#line62">line 62</a>
+                <a href="Component.js.html">Component.js</a>, <a href="Component.js.html#line88">line 88</a>
             </span>
         </p>
     
@@ -1281,7 +1354,7 @@ the CSS display property.  If an animator is configured, it is used instead.</p>
         <p class="tag-source">
             <a href="Component.js.html" class="button">View Source</a>
             <span>
-                <a href="Component.js.html">Component.js</a>, <a href="Component.js.html#line82">line 82</a>
+                <a href="Component.js.html">Component.js</a>, <a href="Component.js.html#line108">line 108</a>
             </span>
         </p>
     
@@ -1458,7 +1531,7 @@ an instance of <code>Template</code> that wraps the templated markup.</p>
         <p class="tag-source">
             <a href="Component.js.html" class="button">View Source</a>
             <span>
-                <a href="Component.js.html">Component.js</a>, <a href="Component.js.html#line48">line 48</a>
+                <a href="Component.js.html">Component.js</a>, <a href="Component.js.html#line74">line 74</a>
             </span>
         </p>
     
@@ -1580,7 +1653,7 @@ an instance of <code>Template</code> that wraps the templated markup.</p>
         <p class="tag-source">
             <a href="Component.js.html" class="button">View Source</a>
             <span>
-                <a href="Component.js.html">Component.js</a>, <a href="Component.js.html#line94">line 94</a>
+                <a href="Component.js.html">Component.js</a>, <a href="Component.js.html#line120">line 120</a>
             </span>
         </p>
     
