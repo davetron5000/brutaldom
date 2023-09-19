@@ -104,7 +104,7 @@
 
 
     <section>
-        <article><h1 id="brutaldom---treat-your-web-pages-for-what-they-are%2C-not-what-you'd-like-them-to-be">brutaldom - Treat your web pages for what they are, not what you'd like them to be</h1>
+        <article><h1 id="brutaldom---treat-your-web-pages-for-what-they-are%2C-not-what-you'd-like-them-to-be">BrutalDOM - Treat your web pages for what they are, not what you'd like them to be</h1>
 <p>A web page is a bunch of HTML and CSS. It can include JavaScript that responds to events.  The browser includes
 many powerful APIs for building just about any user interface you might need.  Thus, you can build whatever you
 need without any third party framework. But the browser's API is complex and contains many more features and
@@ -183,19 +183,93 @@ browser.</p>
 to provide the exact API yoru app needs to interact with it.</p>
 <p>Here are the main features:</p>
 <ul>
-<li><strong>DOM element location without <code>if</code> statements.</strong> Every <code>Component</code> provides several methods to locate DOM elements. These
+<li>
+<p><strong>DOM element location without <code>if</code> statements.</strong> Every <code>Component</code> provides several methods to locate DOM elements. These
 methods will fail if the located element is not found (or if a collection of elements results in zero elements).  The <code>Body</code>
-class allows you to locate elements from the <code>&lt;body&gt;</code>.</li>
-<li><strong>Create Richer, Higher-Level Events.</strong>  <code>addEventListener</code> is fine, exception that it takes a string for the name and produces
+class allows you to locate elements from the <code>&lt;body&gt;</code>.</p>
+<pre class="prettyprint source lang-javascript"><code>// BAD: if there is no button, you don't get notified.
+//      if there is more than one match, you just get the first one
+const button = document.querySelector(&quot;button[data-doit]&quot;)
+
+const body = new Body()
+
+// GOOD: If there is not exactly one match, you get an exception
+const button = body.$selector(&quot;button[data-doit]&quot;)
+
+
+// BAD: if there are no buttons, you get an empty list, which is likely 
+//      not what you want
+const buttons = document.querySelectorAll(&quot;button[data-doit]&quot;)
+
+// GOOD: if there is not one or more matches, you get an exception
+const buttons = body.$selectors(&quot;button[data-doit]&quot;)
+</code></pre>
+</li>
+<li>
+<p><strong>Create Richer, Higher-Level Events.</strong>  <code>addEventListener</code> is fine, exception that it takes a string for the name and produces
 only an <code>Event</code>.  This means lots of translating concepts.  Instead, you can easily define events using methods—not strings—whose
-payloas, when fired, produce objects in your domain, or which trigger other events.</li>
-<li><strong>Templates and Slots without Shadow DOM</strong>.  The <code>&lt;template&gt;</code> and <code>&lt;slot&gt;</code> elements standard, but Web Components provides a
+payloads, when fired, produce objects in your domain, or which trigger other events.</p>
+<pre class="prettyprint source lang-javascript"><code>// BAD: &quot;input&quot; can be mistyped, plus you have to examine
+//      .checked
+checkboxElement.addEventListener(&quot;input&quot;, () => {
+  if (checkboxElement.checked) {
+    // do one thing
+  }
+  else {
+    // do another
+  }
+})
+
+// GOOD: explicit events, no introspection of the DOM element,
+//       and no strings
+checkbox = new Checkbox(checkboxElement)
+checkbox.onChecked( () => {
+  // do on thing
+})
+checkbox.onChecked( () => {
+  // do another
+})
+</code></pre>
+</li>
+<li>
+<p><strong>Templates and Slots without Shadow DOM</strong>.  The <code>&lt;template&gt;</code> and <code>&lt;slot&gt;</code> elements standard, but Web Components provides a
 somewhat clunky API to these. Plus, using Web Components with templates requires adopting the Shadown DOM which you may not want
 to do.  Instead, any <code>Component</code> can locate a <code>Template</code>, then create a <code>newNode</code> that fills in any <code>&lt;slot&gt;</code> elements with data
-you define in code.</li>
-<li><strong>Simplified Animation</strong>. The browser's animation API is powerful but flexible and clunky.  <code>Animator</code> allows a more
+you define in code.</p>
+<pre class="prettyprint source"><code>&lt;div data-my-content>
+  &lt;template>
+    &lt;p>&lt;slot name=&quot;message&quot;>&lt;/slot>&lt;/p>
+    &lt;code>&lt;slot name=&quot;link&quot;>&lt;/slot>&lt;/code>
+  &lt;/template>
+&lt;/div>
+
+</code></pre>
+<pre class="prettyprint source lang-javascript"><code>class MyContent extends Component {
+  wasCreated() {
+    this.messageTemplate = this.template()
+  }
+
+  addMessage(message, link) {
+    const node = this.messageTemplate.newNode({
+      fillSlots: {
+        message: message,
+        link: link,
+      }
+    })
+    this.element.appendChild(node)
+  }
+}
+
+const content = new MyContent(body.$(&quot;my-content&quot;))
+content.addMessage(&quot;Hello!&quot;,&quot;www.exampe.com&quot;)
+content.addMessage(&quot;Hello Again!&quot;,&quot;www.exampe.net&quot;)
+</code></pre>
+</li>
+<li>
+<p><strong>Simplified Animation</strong>. The browser's animation API is powerful but flexible and clunky.  <code>Animator</code> allows a more
 streamlined way to animate between two sets of styles.  It can't handle every single animation need, but certainly handles most
-of them.</li>
+of them.</p>
+</li>
 </ul>
 <h2 id="developing">Developing</h2>
 <p>To work on brutaldom:</p>
