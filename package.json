@@ -1,6 +1,6 @@
 {
   "name": "brutaljs",
-  "version": "1.0.0",
+  "version": "1.0.0-alpha1",
   "description": "Classes to wrap DOM APIs to make writing your app's front-end easier",
   "author": "David Copeland",
   "license": "Hippocratic-2.1",

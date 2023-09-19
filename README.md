@@ -114,3 +114,14 @@ you define in code.
 * **Simplified Animation**. The browser's animation API is powerful but flexible and clunky.  `Animator` allows a more
 streamlined way to animate between two sets of styles.  It can't handle every single animation need, but certainly handles most
 of them.
+
+## Developing
+
+To work on brutaljs:
+
+1. Install Docker
+2. `dx/build`
+3. `dx/start`
+4. In another terminal, `dx/exec bin/setup`
+5. In another terminal, `dx/exec bin/test`
+6. Open up the browser wherever the output of `bin/test` says to, and the tests will run in the browser.
