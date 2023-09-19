@@ -59,12 +59,15 @@ window.addEventListener("DOMContentLoaded",() => {
 })
 ```
 
-This is the core logic that glues together the app.  `Body` is provided by BrutalJS, but `Button` and `Message` are defined by you:
+This is the core logic that glues together the app.  `Body` is provided by BrutalJS, but `Button` and `Message` are defined by you.  Before we see those, note that it's a bit more clear what does what.  When the button is clicked, we show the message.
+
+Here's `Button`
 
 ```javascript
+import { Component } from "brutaljs"
+
 class Button extends Component {
-  constructor(element) {
-    super(element)
+  whenCreated() {
     EventManager.defineEvents(this, "click")
     this.element.addEventListener("click", (event) => {
       event.preventDefault()
@@ -72,13 +75,42 @@ class Button extends Component {
     })
   }
 }
+```
 
+That…looks like regular JavaScript.  It's a bit more code, but all the stuff inside `whenCreated()` is providing a richer event
+than what yo uget with `addEventListener`.  It provides the `onClick` method. If you mis-type it, you'll get an error as opposed
+to silent failure.
+
+`Message` doesn't need much logic and can use the builtin `Component`:
+
+```javascript
 class Message extends Component {
 }
 ```
 
-`Component` is provided by `BrutalJS` and has `hide` and `show` methods.  `EventManager` is provided by BrutalJS
+This provides the `show()` method.
 
-That's it!  It may seem like a bit more code, but this gives you the smallest possible footprint to use the underlying DOM APIs.
+This may seem like more code. For this simple case, it certainly is. But, when you have a complex UI that has a lot of events and
+interactions, it can be help to create high-level components that don't stray too much from the base APIs that are part othe
+browser.
 
+## General Overview
 
+Any DOM element you want to interact with should have a new class that extends `Component`.  That class is then designed by you
+to provide the exact API yoru app needs to interact with it.
+
+Here are the main features:
+
+* **DOM element location without `if` statements.** Every `Component` provides several methods to locate DOM elements. These
+methods will fail if the located element is not found (or if a collection of elements results in zero elements).  The `Body`
+class allows you to locate elements from the `<body>`.
+* **Create Richer, Higher-Level Events.**  `addEventListener` is fine, exception that it takes a string for the name and produces
+only an `Event`.  This means lots of translating concepts.  Instead, you can easily define events using methods—not strings—whose
+payloas, when fired, produce objects in your domain, or which trigger other events.
+* **Templates and Slots without Shadow DOM**.  The `<template>` and `<slot>` elements standard, but Web Components provides a
+somewhat clunky API to these. Plus, using Web Components with templates requires adopting the Shadown DOM which you may not want
+to do.  Instead, any `Component` can locate a `Template`, then create a `newNode` that fills in any `<slot>` elements with data
+you define in code.
+* **Simplified Animation**. The browser's animation API is powerful but flexible and clunky.  `Animator` allows a more
+streamlined way to animate between two sets of styles.  It can't handle every single animation need, but certainly handles most
+of them.
