@@ -1,5 +1,7 @@
 # BrutalDOM - Treat your web pages for what they are, not what you'd like them to be
 
+**BrutalDOM is not ready for production USE** - I've only used it on two projects and so it is evolving.
+
 A web page is a bunch of HTML and CSS. It can include JavaScript that responds to events.  The browser includes
 many powerful APIs for building just about any user interface you might need.  Thus, you can build whatever you
 need without any third party framework. But the browser's API is complex and contains many more features and
