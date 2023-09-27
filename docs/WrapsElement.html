@@ -235,7 +235,7 @@ provides a few convienience methods useful when interacting with the DOM.</p>
         <p class="tag-source">
             <a href="WrapsElement.js.html" class="button">View Source</a>
             <span>
-                <a href="WrapsElement.js.html">WrapsElement.js</a>, <a href="WrapsElement.js.html#line11">line 11</a>
+                <a href="WrapsElement.js.html">WrapsElement.js</a>, <a href="WrapsElement.js.html#line14">line 14</a>
             </span>
         </p>
     
@@ -368,7 +368,7 @@ provides a few convienience methods useful when interacting with the DOM.</p>
         <p class="tag-source">
             <a href="WrapsElement.js.html" class="button">View Source</a>
             <span>
-                <a href="WrapsElement.js.html">WrapsElement.js</a>, <a href="WrapsElement.js.html#line115">line 115</a>
+                <a href="WrapsElement.js.html">WrapsElement.js</a>, <a href="WrapsElement.js.html#line89">line 89</a>
             </span>
         </p>
     
@@ -599,7 +599,7 @@ the selector is found. Given an argument with the number of elements found.</p><
         <p class="tag-source">
             <a href="WrapsElement.js.html" class="button">View Source</a>
             <span>
-                <a href="WrapsElement.js.html">WrapsElement.js</a>, <a href="WrapsElement.js.html#line60">line 60</a>
+                <a href="WrapsElement.js.html">WrapsElement.js</a>, <a href="WrapsElement.js.html#line63">line 63</a>
             </span>
         </p>
     
@@ -819,7 +819,7 @@ as the basis for the search.</p></td>
         <p class="tag-source">
             <a href="WrapsElement.js.html" class="button">View Source</a>
             <span>
-                <a href="WrapsElement.js.html">WrapsElement.js</a>, <a href="WrapsElement.js.html#line102">line 102</a>
+                <a href="WrapsElement.js.html">WrapsElement.js</a>, <a href="WrapsElement.js.html#line81">line 81</a>
             </span>
         </p>
     
@@ -958,7 +958,7 @@ as the basis for the search.</p></td>
         <p class="tag-source">
             <a href="WrapsElement.js.html" class="button">View Source</a>
             <span>
-                <a href="WrapsElement.js.html">WrapsElement.js</a>, <a href="WrapsElement.js.html#line120">line 120</a>
+                <a href="WrapsElement.js.html">WrapsElement.js</a>, <a href="WrapsElement.js.html#line94">line 94</a>
             </span>
         </p>
     
@@ -1055,7 +1055,7 @@ as the basis for the search.</p></td>
         <p class="tag-source">
             <a href="WrapsElement.js.html" class="button">View Source</a>
             <span>
-                <a href="WrapsElement.js.html">WrapsElement.js</a>, <a href="WrapsElement.js.html#line125">line 125</a>
+                <a href="WrapsElement.js.html">WrapsElement.js</a>, <a href="WrapsElement.js.html#line99">line 99</a>
             </span>
         </p>
     
@@ -1077,6 +1077,208 @@ as the basis for the search.</p></td>
 
 
 
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="template">
+        <a class="href-link" href="#template">#</a>
+        
+        <span class="code-name">
+            
+                template<span class="signature">(dataAttribute, baseElement)</span><span class="type-signature"> &rarr; {<a href="Template.html">Template</a>}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Creates a <code>Template</code> based on an element inside this component.</p>
+<p>A common pattern with dynamic UIs is to use a template element to create dynamic
+elements with actual data in them.  This method simplifies that by locating the
+template (which is assumed to exist or there is an error) and then returning
+an instance of <code>Template</code> that wraps the templated markup.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>dataAttribute</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">String</code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>if present, the name of a data attribute to identify the template. This will be combined with <code>data-</code> so you should omit that. If omitted, this will locate a <code>template</code> element.  In either case, there must be exactly one such element within this component's element (or the provided <code>baseElement</code>)</p></td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>baseElement</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">Element</code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>if present, this is used to locate the template.  If omitted, will use this component's wrapped element.</p></td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="WrapsElement.js.html" class="button">View Source</a>
+            <span>
+                <a href="WrapsElement.js.html">WrapsElement.js</a>, <a href="WrapsElement.js.html#line116">line 116</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>a Template instance wrapping the template element</p></div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type"><a href="Template.html">Template</a></code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
 
 
 
@@ -1212,7 +1414,7 @@ as the basis for the search.</p></td>
         <p class="tag-source">
             <a href="WrapsElement.js.html" class="button">View Source</a>
             <span>
-                <a href="WrapsElement.js.html">WrapsElement.js</a>, <a href="WrapsElement.js.html#line30">line 30</a>
+                <a href="WrapsElement.js.html">WrapsElement.js</a>, <a href="WrapsElement.js.html#line33">line 33</a>
             </span>
         </p>
     
@@ -1309,7 +1511,7 @@ as the basis for the search.</p></td>
         <p class="tag-source">
             <a href="WrapsElement.js.html" class="button">View Source</a>
             <span>
-                <a href="WrapsElement.js.html">WrapsElement.js</a>, <a href="WrapsElement.js.html#line25">line 25</a>
+                <a href="WrapsElement.js.html">WrapsElement.js</a>, <a href="WrapsElement.js.html#line28">line 28</a>
             </span>
         </p>
     
