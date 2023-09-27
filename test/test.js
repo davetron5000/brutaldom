@@ -1,13 +1,17 @@
 import "./Component.test"
 import "./WrapsElement.test"
 import "./Body.test"
-import { suites } from "./shared"
+import "./Template.test"
+import { suites, FailedAsError } from "./shared"
 
+const uid = () => {
+  return Date.now().toString(36) + Math.random().toString(36).substr(10);
+}
 const runTests = () => {
   const $output = document.getElementById("output")
   $output.innerText = "HERE WE GO\n"
   suites.forEach( (suite) => {
-    const defaultArgs = { document }
+    const defaultArgs = { document, uid }
     suite.tests.forEach( (test) => {
       try {
         let testArgs = defaultArgs
@@ -15,7 +19,18 @@ const runTests = () => {
           const additionalArgs = suite.setup(defaultArgs)
           testArgs = { ...defaultArgs, ...additionalArgs }
         }
-        const result = test.run(testArgs)
+        let result
+        try {
+          result = test.run(testArgs)
+        }
+        catch (e) {
+          if (e instanceof FailedAsError) {
+            result = e.asTestResult()
+          }
+          else {
+            throw e
+          }
+        }
         if (result.isPassed()) {
           $output.innerText = $output.innerText + `OK   : ${suite.description} - ${test.description}\n`
         }
@@ -33,7 +48,8 @@ const runTests = () => {
         }
       }
       catch (e) {
-        $output.innerText = $output.innerText + `ERROR: ${suite.description} - ${test.description}\n       error: ${e}\n`
+        $output.innerText = $output.innerText + `ERROR: ${suite.description} - ${test.description}\n       error: ${e}\n\n       >See console for details<\n`
+        console.error(e)
 
       }
     })

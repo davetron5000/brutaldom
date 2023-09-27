@@ -24,6 +24,17 @@ class Failed {
   isError()  { return false }
 }
 
+class FailedAsError extends Error {
+  constructor(message,...messageArgs) {
+    super(message)
+    this.failureMessage = message
+    this.messageArgs = messageArgs
+  }
+  asTestResult() {
+    return new Failed(this.failureMessage,...this.messageArgs)
+  }
+}
+
 /**
  * A test to run.  It has a description and a run method
  *
@@ -148,13 +159,26 @@ const suite = (descOrKlass, descOrCreateTests, createTestsOrUndefined) => {
   suites.push(suiteObject)
 }
 
+const assertEqual = (expected,got,context) => {
+  if (got !== expected) {
+    if (context) {
+      context = `\nContext : ${context}`
+    }
+    else {
+      context = ""
+    }
+    throw new FailedAsError(`Expected: '${expected}'\nGot     : '${got}'${context}`)
+  }
+}
 
 export {
   Passed,
   Failed,
+  FailedAsError,
   Test,
   TestSuite,
   suite,
   suites,
+  assertEqual,
 }
 

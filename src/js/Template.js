@@ -1,4 +1,5 @@
-import WrapsElement from "./WrapsElement"
+import BrutalDOMBase   from "./BrutalDOMBase"
+import SelectorMethods from "./private/SelectorMethods"
 
 /**
  * Simplifies creating new DOM elements from `template` elements.
@@ -8,7 +9,7 @@ import WrapsElement from "./WrapsElement"
  * a template for a table row where each cell is a slot that needs data for that
  * row inserted.  This class helps manage that process.
  */
-class Template extends WrapsElement {
+class Template extends BrutalDOMBase {
   /**
    * Create a Template with the given element. Note that the element *must*
    * be a `template` element.
@@ -16,7 +17,8 @@ class Template extends WrapsElement {
    * @param {external:Element} element - Element that this will wrap. It must be a `template` element.
    */
   constructor(element) {
-    super(element)
+    super()
+    this.element = element
     if (this.element.tagName != "TEMPLATE") {
       throw `You may not create a Template from a ${this.element.tagName}`
     }
@@ -37,7 +39,7 @@ class Template extends WrapsElement {
     this.event("newNode", { fillSlots: options ? options.fillSlots : undefined })
     if (options && options.fillSlots) {
       Object.entries(options.fillSlots).forEach( ([name,value]) => {
-        this.$slots(name,node).forEach( (slot) => {
+        SelectorMethods.$slots(name,node).forEach( (slot) => {
           slot.innerText = value
         })
       })
