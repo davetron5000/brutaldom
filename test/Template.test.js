@@ -17,7 +17,7 @@ suite("Template", { "newNode": "creates nodes" }, ({test, setup}) => {
     document.body.appendChild(node)
     const fromTemplate = document.querySelector(`[data-from-template=${id}]`)
     if (fromTemplate) {
-      return new Passed()
+      return Passed
     }
     else {
       return new Failed(`Somehow, adding the new node didn't work: ${document}`)
@@ -44,7 +44,7 @@ suite("Template", { "newNode": "creates nodes" }, ({test, setup}) => {
       assertEqual("Pat",fromTemplate.querySelector("h1").textContent)
       assertEqual("Pat",fromTemplate.querySelector("p").textContent)
       assertEqual("Blah",fromTemplate.querySelector("span").textContent)
-      return new Passed()
+      return Passed
     }
     else {
       return new Failed(`Somehow, adding the new node didn't work: ${document}`)
@@ -67,7 +67,7 @@ suite("Template", { "newNode": "creates nodes" }, ({test, setup}) => {
       return new Failed("Expected an error for trying to fill slot 'foo'")
     }
     catch (e) {
-      return new Passed()
+      return Passed
     }
   })
 })

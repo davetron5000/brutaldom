@@ -8,8 +8,13 @@ class AnimatorPreferences extends BrutalDOMBase {
   constructor() {
     super()
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion)").matches
-    const documentForcingNoAnimations = document.body.dataset.animatorImmediate === "true"
-    this.immediateAlways = documentForcingNoAnimations || prefersReducedMotion
+    this.immediateAlways = prefersReducedMotion
+    if (document.body.dataset.animatorImmediate === "true") {
+      this.immediateAlways = true
+    }
+    else if (document.body.dataset.animatorImmediate === "false") {
+      this.immediateAlways = false
+    }
   }
 }
 

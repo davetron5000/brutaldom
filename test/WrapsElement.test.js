@@ -3,7 +3,6 @@ import { Passed, Failed, Test, TestSuite, suite } from "./shared"
 
 class Extender extends WrapsElement {
   wasCreated(arg1,arg2) {
-    console.log(`wasCreated called: ${arg1}, ${arg2}`)
     this.arg1 = arg1
     this.arg2 = arg2
   }
@@ -20,7 +19,7 @@ suite(WrapsElement, { "constructor": "passes args" }, ({setup,test}) => {
   test("subclass constructor passes args", ({document, element}) => {
     const wrapped = new Extender(element,"foo",42)
     if ( (wrapped.arg1 == "foo") && (wrapped.arg2 == 42)) {
-      return new Passed()
+      return Passed
     }
     else {
       return new Failed(
@@ -43,7 +42,7 @@ suite(WrapsElement, { "$selector": "exactly one element" }, ({setup,test}) => {
     const wrapped = new WrapsElement(element)
     try {
       const inner = wrapped.$selector("[data-testid='1234']")
-      return new Passed()
+      return Passed
     }
     catch (e) {
       return new Failed(e)
@@ -67,7 +66,7 @@ suite(WrapsElement, { "$selector": "no elements" }, ({setup,test}) => {
       }
       const inner = wrapped.$selector("[data-testid='5678']",null,cb,null)
       if (called) {
-        return new Passed()
+        return Passed
       }
       else {
         return new Failed(`whenNotFound was not called (${inner})`)
@@ -84,7 +83,7 @@ suite(WrapsElement, { "$selector": "no elements" }, ({setup,test}) => {
       return new Failed(`Found element when not expected: ${inner}`)
     }
     catch (e) {
-      return new Passed()
+      return Passed
     }
 
   })
@@ -111,7 +110,7 @@ suite(WrapsElement,{ "$selector": "more than one match" }, ({setup, test}) => {
       return new Failed(`Found element when not expected: ${inner}`)
     }
     catch (e) {
-      return new Passed()
+      return Passed
     }
   })
 
@@ -124,7 +123,7 @@ suite(WrapsElement,{ "$selector": "more than one match" }, ({setup, test}) => {
       }
       const inner = wrapped.$selector("[data-testid='1234']",null,null,cb)
       if (called) {
-        return new Passed()
+        return Passed
       }
       else {
         return new Failed(`whenMultipleFound was not called (${inner})`)
@@ -150,7 +149,7 @@ suite(WrapsElement,{ "$selectors": "no matches" }, ({setup, test}) => {
       return new Failed("Expected an error, but got results: %o", result)
     }
     catch (e) {
-      return new Passed()
+      return Passed
     }
   })
 })
@@ -168,7 +167,7 @@ suite(WrapsElement,{ "$selectors": "one match" }, ({setup, test}) => {
     const wrapped = new WrapsElement(element)
     const result = wrapped.$selectors("[data-foo]")
     if (result.length == 1) {
-      return new Passed()
+      return Passed
     }
     else {
       return new Failed(`Expected exactly 1 result, but got ${result.length}`)
@@ -192,7 +191,7 @@ suite(WrapsElement,{ "$selectors": "more than one match" }, ({setup, test}) => {
     const wrapped = new WrapsElement(element)
     const result = wrapped.$selectors("[data-foo]")
     if (result.length == 2) {
-      return new Passed()
+      return Passed
     }
     else {
       return new Failed(`Expected exactly 1 result, but got ${result.length}`)
@@ -215,7 +214,7 @@ suite(WrapsElement,{ "$": "calls through" }, ({setup, test}) => {
       const inner = wrapped.$("foo")
       const fromSelect = wrapped.$selector("[data-foo]")
       if (inner == fromSelect) {
-        return new Passed()
+        return Passed
       }
       else {
         return new Failed(`$ got %o, but $selector got %o`,inner,fromSelect)
@@ -241,7 +240,7 @@ suite(WrapsElement,{ "$slot": "calls through" }, ({setup, test}) => {
       const inner = wrapped.$slot("foo")
       const fromSelect = wrapped.$selector("slot[name='foo']")
       if (inner == fromSelect) {
-        return new Passed()
+        return Passed
       }
       else {
         return new Failed(`$slot got %o, but $selector got %o`,inner,fromSelect)
@@ -274,7 +273,7 @@ suite(WrapsElement,{ "$slots": "calls through" }, ({setup, test}) => {
       const fromSelect = wrapped.$selectors("slot[name='foo']")
       if (inner.length == fromSelect.length) {
         if ( (inner[0] == fromSelect[0]) && (inner[1] == fromSelect[1])) {
-          return new Passed()
+          return Passed
         }
         else {
           return new Failed(`$slots got %o, but $selectors got %o`,inner,fromSelect)

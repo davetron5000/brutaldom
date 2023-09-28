@@ -1,10 +1,11 @@
+import TypeOf from "TypeOf"
 /**
  * A passed test result
  */
-class Passed {
-  isPassed() { return true }
-  isFailed() { return false }
-  isError()  { return false }
+const Passed = {
+  isPassed: () => true,
+  isFailed: () => false,
+  isError:  () => false,
 }
 
 /**
@@ -32,6 +33,22 @@ class FailedAsError extends Error {
   }
   asTestResult() {
     return new Failed(this.failureMessage,...this.messageArgs)
+  }
+}
+
+class ErrorTestResult {
+  constructor(error) {
+    this.errorMessage = error.message
+    this.error = error
+  }
+  isPassed() { return false }
+  isFailed() { return false }
+  isError()  { return true }
+}
+
+class TestDidntReturn extends ErrorTestResult {
+  constructor() {
+    super({ message: "Test didn't return anything - you must return Passed or an instance of Failed" })
   }
 }
 
@@ -133,6 +150,8 @@ const suites = []
  *    - test - the test function of TestSuite. You call this to define a test
  *    - setup - a function to proviate setup for the test.  This function accepts a function and THAT function must return an
  *    object.  That object will be passed as named params to the test.
+ *    - teardown - a function to provide teardown after a test.  This function accepts a function and THAT function may not
+ *    return anything
  *
  */
 const suite = (descOrKlass, descOrCreateTests, createTestsOrUndefined) => {
@@ -152,9 +171,14 @@ const suite = (descOrKlass, descOrCreateTests, createTestsOrUndefined) => {
   const setSetup = (f) => {
     suiteObject.setup = f
   }
+  const setTeardown = (f) => {
+    suiteObject.teardown = f
+  }
   createTests({
     setup: setSetup,
-    test: suiteObject.test.bind(suiteObject)
+    teardown: setTeardown,
+    test: suiteObject.test.bind(suiteObject),
+    xtest: () => {},
   })
   suites.push(suiteObject)
 }
@@ -167,7 +191,23 @@ const assertEqual = (expected,got,context) => {
     else {
       context = ""
     }
-    throw new FailedAsError(`Expected: '${expected}'\nGot     : '${got}'${context}`)
+    if (`${got}` === `${expected}`) {
+      throw new FailedAsError(`Expected: '${expected}' (a ${TypeOf.asString(expected)})\nGot     : '${got}'${context} (a ${TypeOf.asString(got)})`)
+    }
+    else {
+      throw new FailedAsError(`Expected: '${expected}'\nGot     : '${got}'${context}`)
+    }
+  }
+}
+const assert = (expression,context) => {
+  if (!expression) {
+    if (context) {
+      context = `\nContext : ${context}`
+    }
+    else {
+      context = ""
+    }
+    throw new FailedAsError(`Assertion Failed${context}`)
   }
 }
 
@@ -175,10 +215,13 @@ export {
   Passed,
   Failed,
   FailedAsError,
+  ErrorTestResult,
+  TestDidntReturn,
   Test,
   TestSuite,
   suite,
   suites,
+  assert,
   assertEqual,
 }
 

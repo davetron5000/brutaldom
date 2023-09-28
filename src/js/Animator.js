@@ -26,7 +26,7 @@ class Animator extends BrutalDOMBase {
    *          it uses "to" as the starting point and "from" as the end, with the
    *          "from" styles being applied.
    */
-  constructor(element, { duration, easing, styles }) {
+  constructor(element, { duration, easing, styles, animatorPreferences }) {
     super()
     this.element  = element
     this.duration = duration || 500
@@ -67,23 +67,14 @@ class Animator extends BrutalDOMBase {
   animateForward(durationOverride) {
     if (this.animatorPreferences.immediateAlways) {
       this.setForwardNow()
-      return new Promise( (resolve) => {
-        resolve()
-      })
+      return Promise.resolve()
     }
     else {
-      return this.element.animate(
-        [
-          this.from,
-          this.to,
-        ],
-        {
-          duration: durationOverride || this.duration,
-          easing: this.easing,
-        }
-      ).finished.then( () => {
-        this.whenDoneForward.forEach( (f) => f() )
-      })
+      return this._animate(
+        this.from,
+        this.to,
+        durationOverride
+      ).then( () => this.setForwardNow() )
     }
   }
 
@@ -109,23 +100,14 @@ class Animator extends BrutalDOMBase {
   animateBackward(durationOverride) {
     if (this.animatorPreferences.immediateAlways) {
       this.setBackwardNow()
-      return new Promise( (resolve) => {
-        resolve()
-      })
+      return Promise.resolve()
     }
     else {
-      return this.element.animate(
-        [
-          this.to,
-          this.from,
-        ],
-        {
-          duration: durationOverride || this.duration,
-          easing: this.easing,
-        }
-      ).finished.then( () => {
-        this.whenDoneBackward.forEach( (f) => f() )
-      })
+      return this._animate(
+        this.to,
+        this.from,
+        durationOverride
+      ).then( () => this.setBackwardNow() )
     }
   }
 
@@ -137,6 +119,19 @@ class Animator extends BrutalDOMBase {
    */
   setBackwardNow() {
     this.whenDoneBackward.forEach( (f) => f() )
+  }
+
+  _animate(to,from,durationOverride) {
+    return this.element.animate(
+      [
+        to,
+        from,
+      ],
+      {
+        duration: durationOverride || this.duration,
+        easing: this.easing,
+      }
+    ).finished
   }
 
 }

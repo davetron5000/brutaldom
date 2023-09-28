@@ -14,7 +14,7 @@ suite(Body, { "$selector": "works generally" }, ({test}) => {
 
     const component = new Component(body.$selector("[data-testid='12345']"))
     if (component.element == div) {
-      return new Passed()
+      return Passed
     }
     else {
       return new Failed("Internal element was %o and not %o", div, component.element)
@@ -31,7 +31,7 @@ suite(Body, { "template": "works generally" }, ({test}) => {
 
     const template = body.template("foo")
     if (template.element == templateElement) {
-      return new Passed()
+      return Passed
     }
     else {
       return new Failed("Internal element was %o and not %o", div, component.element)

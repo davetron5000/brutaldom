@@ -1,4 +1,5 @@
-import WrapsElement    from "./WrapsElement"
+import WrapsElement   from "./WrapsElement"
+import BrutalDOMError from "./BrutalDOMError"
 
 
 /**
@@ -45,66 +46,90 @@ import WrapsElement    from "./WrapsElement"
 class Component extends WrapsElement {
 
   /**
-   * Creates a new component
+   * Creates a new component.  The main difference between a `WrapsElement` and a `Component` is that 
+   * a `Component` can be hidden or shown.  This works by manipulating the `display` CSS property.
+   *
+   * This class must know the value for `display` when the component should be shown.  If the component's
+   * `display` CSS property is not "none", that is the value used.  If the component is initially
+   * hidden because `display` is set to "none", there *must* be an attribute named `data-brutaldom-display`
+   * that contains the value for `display` to use when the component is shown.
    *
    * @param {external:Element} element - an Element from a web page that this component wraps
    * @param {...args} args - passed to the super class and then to `wasCreated` if implemented.
    *
+   * @throws {BrutalDOMError} if there is no `data-brutaldom-display` attribute for a component that is hidden.
+   *
    */
   constructor(element, ...args) {
     super(element, ...args)
-    this.element = element
-    this.hidden  = window.getComputedStyle(this.element).display === "none"
+
+    this.display = window.getComputedStyle(this.element).display
+    this.hidden  = this.display === "none"
+    if (this.hidden) {
+      this.display = this.element.dataset["brutaldomDisplay"]
+      if (!this.display) {
+        throw new BrutalDOMError(`If your component is hidden by default, you must set data-brutaldom-display to the display value you want to use when showing it.`)
+      }
+    }
   }
 
 
   /**
-   * Hides a component.
+   * Hides a component by setting its `display` CSS property to "none".
    *
-   * It's common to want to hide or show components. This method can be called
-   * by others to hide the component. By default, the hiding is done via 
-   * the CSS display property.  If an animator is configured, it is used instead.
+   * If there is an animator, `animateBackward()` is called first and, when that completes, the component is hidden. If
+   * there is no animator, the component is shown immediately.
    *
-   * XXX: Change impl
+   * @returns {external:Promise} that, when resolved, means the component is hidden.
    */
   hide() {
-    this.hidden = true
+    const hideImmediately = () => {
+      this.element.style.display = "none"
+      this.hidden = true
+      return Promise.resolve()
+    }
     if (this.animator) {
-      this.animator.animateBackward()
+      return this.animator.animateBackward().then( () => hideImmediately() )
     }
     else {
-      this.element.classList.remove("db")
-      this.element.classList.add("dn")
+      return hideImmediately()
     }
   }
 
   /**
-   * Shows a component.
+   * Shows a component by setting its `display` CSS property to either the initial value (if the underlying
+   * element was visible upon Component creation) or the value from data-brutaldom-display (if the underlying
+   * element was initially hidden).
    *
-   * It's common to want to hide or show components. This method can be called
-   * by others to show the component. By default, the showing is done via 
-   * the CSS display property.  If an animator is configured, it is used instead.
+   * If there is an animator, `animateForward()` is called first and, when that completes, the component is hidden. If
+   * there is no animator, the component is shown immediately.
    *
-   * XXX: Change impl
+   * @returns {external:Promise} that, when resolved, means the component is hidden.
    */
   show() {
-    this.hidden = false
+    const showImmediately = () => {
+      this.element.style.display = this.display
+      this.hidden = false
+      return Promise.resolve()
+    }
     if (this.animator) {
-      this.animator.animateForward()
+      return this.animator.animateForward().then( () => showImmediately() )
     }
     else {
-      this.element.classList.remove("dn")
-      this.element.classList.add("db")
+      return showImmediately()
     }
   }
 
-  /** Toggles the shown/hidden state */
+
+  /** Toggles the shown/hidden state, effectively calling `show()` or `hide()` as appropriate and
+    * returning what is returned.
+    */
   toggle() {
     if (this.hidden) {
-      this.show()
+      return this.show()
     }
     else {
-      this.hide()
+      return this.hide()
     }
   }
 
