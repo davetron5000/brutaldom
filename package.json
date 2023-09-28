@@ -1,6 +1,6 @@
 {
   "name": "brutaldom",
-  "version": "1.0.0-alpha3",
+  "version": "1.0.0-alpha4",
   "description": "Classes to wrap DOM APIs to make writing your app's front-end easier",
   "author": "David Copeland",
   "license": "Hippocratic-2.1",

@@ -2282,8 +2282,9 @@ record an event and a measurement</p>
         <p>Shows a component by setting its <code>display</code> CSS property to either the initial value (if the underlying
 element was visible upon Component creation) or the value from data-brutaldom-display (if the underlying
 element was initially hidden).</p>
-<p>If there is an animator, <code>animateForward()</code> is called first and, when that completes, the component is hidden. If
-there is no animator, the component is shown immediately.</p>
+<p>If there is an animator, the component is shown and <code>animateForward()</code> is called.  The assumption is
+that the element will not be visible, even if <code>display</code> is not &quot;none&quot;.  This is the only way to
+have the animation be shown.</p>
     </div>
     
 
@@ -2334,7 +2335,7 @@ there is no animator, the component is shown immediately.</p>
         <p class="tag-source">
             <a href="Component.js.html" class="button">View Source</a>
             <span>
-                <a href="Component.js.html">Component.js</a>, <a href="Component.js.html#line109">line 109</a>
+                <a href="Component.js.html">Component.js</a>, <a href="Component.js.html#line110">line 110</a>
             </span>
         </p>
     
@@ -2664,7 +2665,7 @@ returning what is returned.</p>
         <p class="tag-source">
             <a href="Component.js.html" class="button">View Source</a>
             <span>
-                <a href="Component.js.html">Component.js</a>, <a href="Component.js.html#line127">line 127</a>
+                <a href="Component.js.html">Component.js</a>, <a href="Component.js.html#line128">line 128</a>
             </span>
         </p>
     

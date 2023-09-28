@@ -101,8 +101,9 @@ class Component extends WrapsElement {
    * element was visible upon Component creation) or the value from data-brutaldom-display (if the underlying
    * element was initially hidden).
    *
-   * If there is an animator, `animateForward()` is called first and, when that completes, the component is hidden. If
-   * there is no animator, the component is shown immediately.
+   * If there is an animator, the component is shown and `animateForward()` is called.  The assumption is 
+   * that the element will not be visible, even if `display` is not "none".  This is the only way to 
+   * have the animation be shown.
    *
    * @returns {external:Promise} that, when resolved, means the component is hidden.
    */
@@ -113,7 +114,7 @@ class Component extends WrapsElement {
       return Promise.resolve()
     }
     if (this.animator) {
-      return this.animator.animateForward().then( () => showImmediately() )
+      return showImmediately().then ( () => this.animator.animateForward() )
     }
     else {
       return showImmediately()
