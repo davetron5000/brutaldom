@@ -1,4 +1,5 @@
-import TypeOf from "./TypeOf"
+import TypeOf         from "./TypeOf"
+import BrutalDOMError from "./BrutalDOMError"
 
 /**
  * Convienience methods for tracing/logging method behavior.  This is mixed-into BrutalDOMBase so should
@@ -54,10 +55,10 @@ const LogMixin = {
    */
   measure(measurementName,start,end) {
     if (!start) {
-      throw `You forgot to add start & end to measure(${measurementName})`
+      throw new BrutalDOMError(`You forgot to add start & end to measure(${measurementName})`)
     }
     else if (!end) {
-      throw `You forgot to add end to measure(${measurementName})`
+      throw new BrutalDOMError(`You forgot to add end to measure(${measurementName})`)
     }
 
     performance.measure(this._name(measurementName),

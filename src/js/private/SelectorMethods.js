@@ -1,16 +1,18 @@
+import BrutalDOMError from "../BrutalDOMError"
+
 class SelectorMethods {
   static $selector(selector,baseElement,whenNotFound,whenMultipleFound) {
     if ( !(baseElement instanceof Element) && !(baseElement instanceof Document) ) {
-      throw `Base element should be an Element or Document. Got ${JSON.stringify(baseElement)}`
+      throw new BrutalDOMError(`Base element should be an Element or Document. Got ${JSON.stringify(baseElement)}`)
     }
     if (!whenNotFound) {
       whenNotFound = () => {
-        throw `Could not find '${selector}' from ${baseElement.outerHTML}`
+        throw new BrutalDOMError(`Could not find '${selector}' from ${baseElement.outerHTML}`)
       }
     }
     if (!whenMultipleFound) {
       whenMultipleFound = (numFound) => {
-        throw `Found ${numFound} nodes instead of 1 matching '${selector}' from ${baseElement.outerHTML}`
+        throw new BrutalDOMError(`Found ${numFound} nodes instead of 1 matching '${selector}' from ${baseElement.outerHTML}`)
       }
     }
 

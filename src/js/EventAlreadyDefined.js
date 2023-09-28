@@ -1,3 +1,4 @@
+import BrutalDOMError from "./BrutalDOMError"
 /**
  * Thrown when an event has already been defined on a class.
  *
@@ -7,7 +8,7 @@
  *
  * @see EventManager
  */
-class EventAlreadyDefined extends Error {
+class EventAlreadyDefined extends BrutalDOMError {
   constructor(eventName,propertyNameFound) {
     super(`${eventName} appears to have already been defined - found '${propertyNameFound}' defined`)
     this.eventName = eventName

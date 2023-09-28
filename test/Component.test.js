@@ -2,7 +2,7 @@ import Component from "Component"
 import Animator from "Animator"
 import BrutalDOMError from "BrutalDOMError"
 
-import { Passed, Failed, Test, TestSuite, assertEqual, suite } from "./shared"
+import { Passed, Failed, assertEqual, suite } from "./shared"
 
 suite("Component", ({test}) => {
   test("detects hidden", ({document}) => {

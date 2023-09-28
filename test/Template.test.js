@@ -1,5 +1,5 @@
 import Template from "Template"
-import { Passed, Failed, Test, TestSuite, suite, assertEqual } from "./shared"
+import { Passed, Failed, suite, assertEqual } from "./shared"
 
 suite("Template", { "newNode": "creates nodes" }, ({test, setup}) => {
   test("no slots", ({document, uid}) => {

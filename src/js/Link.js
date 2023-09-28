@@ -6,7 +6,5 @@ class Link extends Component {
   wasCreated() {
     this.clickEventManager = EventManager.createDirectProxyFor(this, { element: this.element, eventName: "click" })
   }
-
-  
 }
 export default Link

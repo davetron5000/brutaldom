@@ -1,3 +1,5 @@
+import BrutalDOMError from "./BrutalDOMError"
+
 /**
  * Wrapper around which stage or environment the code is running in.  For example, this class will tell you
  * if you are running in test or production mode.
@@ -16,7 +18,7 @@ class Env {
       this.string = string
     }
     else {
-      throw `'${string}' is not a valid ENV`
+      throw new BrutalDOMError(`'${string}' is not a valid ENV`)
     }
   }
 

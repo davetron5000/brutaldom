@@ -2,7 +2,7 @@ import Body      from "Body"
 import Template  from "Template"
 import Component from "Component"
 
-import { Passed, Failed, Test, TestSuite, suite } from "./shared"
+import { Passed, Failed, suite } from "./shared"
 
 suite(Body, { "$selector": "works generally" }, ({test}) => {
   test("can wrap as needed", ({document}) => {

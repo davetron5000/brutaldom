@@ -1,4 +1,5 @@
 import BrutalDOMBase   from "./BrutalDOMBase"
+import BrutalDOMError  from "./BrutalDOMError"
 import SelectorMethods from "./private/SelectorMethods"
 
 /**
@@ -20,7 +21,7 @@ class Template extends BrutalDOMBase {
     super()
     this.element = element
     if (this.element.tagName != "TEMPLATE") {
-      throw `You may not create a Template from a ${this.element.tagName}`
+      throw new BrutalDOMError(`You may not create a Template from a ${this.element.tagName}`)
     }
   }
 

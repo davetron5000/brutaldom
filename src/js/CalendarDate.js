@@ -1,4 +1,5 @@
-import TypeOf from "./TypeOf"
+import TypeOf         from "./TypeOf"
+import BrutalDOMError from "./BrutalDOMError"
 
 /** Represents a date, not a timestamp, but since Date was taken, here we are.
  *  @property {Number} year  - The four digit year
@@ -45,12 +46,12 @@ class CalendarDate {
     if ( TypeOf.asString(dateOrString) == "String" ) {
       const parts = dateOrString.split("-")
       if (parts.length != 3) {
-        throw `CalendarDate requires a Date or String in the form YYYY-MM-DD, but got '${dateOrString}'`
+        throw new BrutalDOMError(`CalendarDate requires a Date or String in the form YYYY-MM-DD, but got '${dateOrString}'`)
       }
       date = new Date(parts[0], parts[1] - 1, parts[2])
     }
     if (!(date instanceof Date)) {
-      throw `CalendarDate requires a Date, but got ${new TypeOf(date)} ('${date}')`
+      throw new BrutalDOMError(`CalendarDate requires a Date, but got ${new TypeOf(date)} ('${date}')`)
     }
 
     this.date  = date

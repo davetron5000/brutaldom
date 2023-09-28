@@ -2,6 +2,7 @@ import "./Animator.test"
 import "./Body.test"
 import "./Component.test"
 import "./Template.test"
+import "./TypeOf.test"
 import "./WrapsElement.test"
 
 import { suites, FailedAsError, TestDidntReturn, ErrorTestResult } from "./shared"

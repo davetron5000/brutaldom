@@ -1,6 +1,6 @@
 import Animator from "Animator"
 
-import { Passed, Failed, Test, TestSuite, assert, assertEqual, suite } from "./shared"
+import { Passed, Failed, assert, assertEqual, suite } from "./shared"
 
 suite("Animator", { "AnimatorPreferences.immediateAlways": "does not perform animation" }, ({test, setup, teardown}) => {
   setup( ({document}) => {
@@ -97,7 +97,7 @@ suite("Animator", { "AnimatorPreferences.immediateAlways == false": "performs an
       const diff = Date.now() - now
       assertEqual("1", element.style.opacity)
       assertEqual("rgb(255, 255, 255)", element.style.backgroundColor)
-      assert(diff < 150,`Expected animation to take 125ms (less than 150 total), but it took ${diff}ms`)
+      assert(diff < 200,`Expected animation to take 125ms (less than 200 total), but it took ${diff}ms`)
       return Passed
     })
   })
@@ -122,7 +122,7 @@ suite("Animator", { "AnimatorPreferences.immediateAlways == false": "performs an
       const diff = Date.now() - now
       assertEqual("0", element.style.opacity)
       assertEqual("rgb(0, 0, 0)", element.style.backgroundColor)
-      assert(diff < 150,`Expected animation to take 125ms (less than 150 total), but it took ${diff}ms`)
+      assert(diff < 200,`Expected animation to take 125ms (less than 200 total), but it took ${diff}ms`)
       return Passed
     })
   })

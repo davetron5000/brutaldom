@@ -11,6 +11,10 @@ class TypeOf {
    */
   constructor(value) {
     this.typeName = typeof value
+    if (value === null) {
+      this.typeName = "null"
+    }
+
     try {
       if ( ( (typeof value) === "function") && value.name ) {
         this.typeName = value.name

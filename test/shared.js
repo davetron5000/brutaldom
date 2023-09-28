@@ -198,6 +198,7 @@ const assertEqual = (expected,got,context) => {
       throw new FailedAsError(`Expected: '${expected}'\nGot     : '${got}'${context}`)
     }
   }
+  return Passed
 }
 const assert = (expression,context) => {
   if (!expression) {
@@ -209,6 +210,7 @@ const assert = (expression,context) => {
     }
     throw new FailedAsError(`Assertion Failed${context}`)
   }
+  return Passed
 }
 
 export {

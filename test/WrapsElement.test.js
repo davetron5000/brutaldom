@@ -1,5 +1,5 @@
 import WrapsElement from "WrapsElement"
-import { Passed, Failed, Test, TestSuite, suite } from "./shared"
+import { Passed, Failed, assertEqual, assert, suite } from "./shared"
 
 class Extender extends WrapsElement {
   wasCreated(arg1,arg2) {
@@ -16,16 +16,12 @@ suite(WrapsElement, { "constructor": "passes args" }, ({setup,test}) => {
     element.appendChild(innerElement)
     return { element }
   })
+
   test("subclass constructor passes args", ({document, element}) => {
     const wrapped = new Extender(element,"foo",42)
-    if ( (wrapped.arg1 == "foo") && (wrapped.arg2 == 42)) {
-      return Passed
-    }
-    else {
-      return new Failed(
-        `Expected wrapped.arg1 to be 'foo' but was '${wrapped.arg1}; Expected wrapped.arg2 to be 42 but was ${wrapped.arg2}`
-      )
-    }
+    assertEqual("foo",wrapped.arg1)
+    assertEqual(42,wrapped.arg2)
+    return Passed
   })
 })
 
@@ -59,22 +55,13 @@ suite(WrapsElement, { "$selector": "no elements" }, ({setup,test}) => {
 
   test("calls callback", ({document, element}) => {
     const wrapped = new WrapsElement(element)
-    try {
-      let called = false
-      const cb = () => {
-        called = true
-      }
-      const inner = wrapped.$selector("[data-testid='5678']",null,cb,null)
-      if (called) {
-        return Passed
-      }
-      else {
-        return new Failed(`whenNotFound was not called (${inner})`)
-      }
+    let called = false
+    const cb = () => {
+      called = true
     }
-    catch (e) {
-      return new Failed(e)
-    }
+    const inner = wrapped.$selector("[data-testid='5678']",null,cb,null)
+    assert(called,`whenNotFound was not called: ${element.outerHTML}`)
+    return Passed
   })
   test("raises error", ({document, element}) => {
     const wrapped = new WrapsElement(element)
