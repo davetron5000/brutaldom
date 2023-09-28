@@ -133,6 +133,18 @@ class MeasureType {
  * An interface to allow viewing of the log entries sent using Log and the Performance API.  Under the covers, this
  * uses a PerformanceObserver to receive the messages.
  *
+ * In its current form, this will log messages to the browser console.  You can restrict what messages are shown, or create
+ * multiple of these to show only what you need.  There are basically three ways of slicing and dicing:
+ *
+ * * `logContext` - this is a value that a class must set to declare a larger context it's a part of, such as a module. Classes
+ * can declare their logContext by using a static member `logContext` that has the value of any string.  The classes that are
+ * part of this library all have a `logContext` of "brutaldom". This means that your classes that extend `Component` will have
+ * that context, too, if you don't change it.
+ * * `className` - Log messages automatically detect the class name, however note that since JavaScript doesn't really enforce a
+ * global set of class names, if there are two classes named the same anywhere, they could generate log messages with the same
+ * `className`.
+ * * `type` - can be "measure" or "mark", which are from the browser's Performance API.
+ *
  * @see external:PerformanceObserver
  */
 class LogViewer { // DO NOT EXTEND BrutalDOMBase
@@ -140,15 +152,15 @@ class LogViewer { // DO NOT EXTEND BrutalDOMBase
    * Create a LogViewer.
    *
    * @param {Object} namedParams
-   * @param {String} namedParams.logContext - Ignore log messages that don't match this context.  The special value "ALL" means to
+   * @param {String} [namedParams.logContext="ALL"] - Ignore log messages that don't match this context.  The special value "ALL" means to
    * show all log messages.  Otherwise, this is used to filter messages that have both have details and have a logContext key
    * in the details.  If the value of that key includes this value, the message is shown. Otherwise it is filtered out.  Note
    * that any class that mixes in the Log mixin can set its context for messages it logs by setting the logContext static
    * property.  This is useful to tag a group of classes or module.
-   * @param {String} namedParams.className - Filter for only messages from a certain class.  Like logContext, this works by matching
+   * @param {String} [namedParams.className="ALL"] - Filter for only messages from a certain class.  Like logContext, this works by matching
    * on the details value and the className key, which is set automatically by any class using the Log mixin.  The value "ALL" means
    * to shnow all classes.
-   * @param {String} type if "BOTH" then both marks and measures are shown. If mark, only marks are shown. If measure, only measures
+   * @param {String} [type="BOTH"] if "BOTH" then both marks and measures are shown. If mark, only marks are shown. If measure, only measures
    * are shown.
    */
   constructor({ logContext = "ALL", className = "ALL", type = "BOTH" } = {}) {

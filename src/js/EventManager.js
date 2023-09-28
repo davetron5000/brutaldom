@@ -66,29 +66,41 @@ class EventDefinition {
  * `onSubmit`.  The `EventManager` is provided to facilitate the implementation
  * of those events.
  *
- * @example
+ * @example <caption>Implicitly creating managers and listener functions use defineEvents</caption>
  * class Button extends Component {
  *   wasCreated() {
- *     this.clickEventManager = new EventManager(this,"click")
+ *     EventManager.defineEvents(this,"click")
  *     this.element.addEventListener("click", () => {
  *       this.clickEventManager.fireEvent()
  *     })
  *   }
- *
- *   onClick(listener) { this.clickEventManager.addListener(listener) }
  * }
  *
- * @example
- * class Button extends Component {
+ * const button = new Button(element)
+ * button.onClick( () => alert("CLICKED") )
+ *
+ * @example <caption>Explicitly created an EventManager and requisite listener functions</caption>
+ * class Dialog extends Component {
  *   wasCreated() {
- *     EventManager.defineEvents(this, "click")
- *   }
- * }
+ *     this.okEventManager = new EventManager(this,"OK")
+ *     this.dismissEventManager = new EventManager(this,"Dismiss")
  *
- * const button = new Button(document.querySelector("button"))
- * button.onClick( (event) => {
- *   // do whatever on a click
- * })
+ *     // ...
+ *
+ *     this.okButton.addEventListener("click", () => {
+ *       this.okEventManager.fireEvent()
+ *     })
+ *
+ *     document.on("keydown", (event) => {
+ *       if (event.key == "Escape") {
+ *         this.dismissEventManager.fireEvent()
+ *       }
+ *     })
+ *   }
+ *
+ *   onOK(listener) { this.okEventManager.addListener(listener) }
+ *   onDismiss(listener) { this.dismissEventManager.addListener(listener) }
+ * }
  */
 class EventManager extends BrutalDOMBase {
 

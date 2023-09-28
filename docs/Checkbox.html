@@ -70,7 +70,7 @@
             
             <nav>
                 
-                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Externals</h3><ul><li><a href="external-Element.html">Element</a></li><li><a href="external-Node.html">Node</a></li><li><a href="external-Performance.html">Performance</a></li><li><a href="external-Promise.html">Promise</a></li></ul><h3>Classes</h3><ul><li><a href="Animator.html">Animator</a></li><li><a href="AnimatorPreferences.html">AnimatorPreferences</a></li><li><a href="Body.html">Body</a></li><li><a href="BrutalDOMBase.html">BrutalDOMBase</a></li><li><a href="CalendarDate.html">CalendarDate</a></li><li><a href="Checkbox.html">Checkbox</a></li><li><a href="Component.html">Component</a></li><li><a href="Env.html">Env</a></li><li><a href="EventAlreadyDefined.html">EventAlreadyDefined</a></li><li><a href="EventManager.html">EventManager</a></li><li><a href="HumanizedString.html">HumanizedString</a></li><li><a href="Link.html">Link</a></li><li><a href="LogViewer.html">LogViewer</a></li><li><a href="RadioButtons.html">RadioButtons</a></li><li><a href="Runtime.html">Runtime</a></li><li><a href="Select.html">Select</a></li><li><a href="Template.html">Template</a></li><li><a href="TypeOf.html">TypeOf</a></li><li><a href="WrapsElement.html">WrapsElement</a></li></ul><h3>Mixins</h3><ul><li><a href="LogMixin.html">LogMixin</a></li></ul></div>
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Externals</h3><ul><li><a href="external-Element.html">Element</a></li><li><a href="external-Element-animate.html">Element-animate</a></li><li><a href="external-Node.html">Node</a></li><li><a href="external-Performance.html">Performance</a></li><li><a href="external-PerformanceObserver.html">PerformanceObserver</a></li><li><a href="external-Promise.html">Promise</a></li></ul><h3>Classes</h3><ul><li><a href="Animator.html">Animator</a></li><li><a href="AnimatorPreferences.html">AnimatorPreferences</a></li><li><a href="Body.html">Body</a></li><li><a href="BrutalDOMBase.html">BrutalDOMBase</a></li><li><a href="BrutalDOMError.html">BrutalDOMError</a></li><li><a href="Button.html">Button</a></li><li><a href="CalendarDate.html">CalendarDate</a></li><li><a href="Checkbox.html">Checkbox</a></li><li><a href="Component.html">Component</a></li><li><a href="Env.html">Env</a></li><li><a href="EventAlreadyDefined.html">EventAlreadyDefined</a></li><li><a href="EventManager.html">EventManager</a></li><li><a href="HumanizedString.html">HumanizedString</a></li><li><a href="Link.html">Link</a></li><li><a href="LogViewer.html">LogViewer</a></li><li><a href="RadioButtons.html">RadioButtons</a></li><li><a href="Runtime.html">Runtime</a></li><li><a href="Select.html">Select</a></li><li><a href="Template.html">Template</a></li><li><a href="TypeOf.html">TypeOf</a></li><li><a href="WrapsElement.html">WrapsElement</a></li></ul><h3>Mixins</h3><ul><li><a href="Log.html">Log</a></li></ul></div>
                 
             </nav>
         </div>
@@ -172,7 +172,7 @@ as a setter to set the checked value</p></div>
         <p class="tag-source">
             <a href="Checkbox.js.html" class="button">View Source</a>
             <span>
-                <a href="Checkbox.js.html">Checkbox.js</a>, <a href="Checkbox.js.html#line7">line 7</a>
+                <a href="Checkbox.js.html">Checkbox.js</a>, <a href="Checkbox.js.html#line8">line 8</a>
             </span>
         </p>
     
@@ -219,7 +219,386 @@ as a setter to set the checked value</p></div>
     
 
     
+        <div class='vertical-section'>
+            <h1>Members</h1>
+            <div class="members">
+            
+                <div class="member">
 
+<h4 class="name" id="checked">
+    <a class="href-link" href="#checked">#</a>
+    
+    <span class="code-name">
+        checked
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>Write-only property to set the Checkbox as checked or not.</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="Checkbox.js.html" class="button">View Source</a>
+            <span>
+                <a href="Checkbox.js.html">Checkbox.js</a>, <a href="Checkbox.js.html#line23">line 23</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+            </div>
+        </div>
+    
+
+    
+        <div class='vertical-section'>
+            <h1>Methods</h1>
+            <div class="members">
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="onChecked">
+        <a class="href-link" href="#onChecked">#</a>
+        
+        <span class="code-name">
+            
+                onChecked<span class="signature">(callback)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Called when this checkbox is checked</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>callback</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">function</code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>function to call when this checkbox is checked</p></td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="Checkbox.js.html" class="button">View Source</a>
+            <span>
+                <a href="Checkbox.js.html">Checkbox.js</a>, <a href="Checkbox.js.html#line27">line 27</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="onUnchecked">
+        <a class="href-link" href="#onUnchecked">#</a>
+        
+        <span class="code-name">
+            
+                onUnchecked<span class="signature">(callback)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Called when this checkbox is unchecked</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>callback</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">function</code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>function to call when this checkbox is unchecked</p></td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="Checkbox.js.html" class="button">View Source</a>
+            <span>
+                <a href="Checkbox.js.html">Checkbox.js</a>, <a href="Checkbox.js.html#line35">line 35</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+            </div>
+        </div>
     
 
     

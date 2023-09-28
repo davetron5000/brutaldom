@@ -30,7 +30,7 @@ class Template extends BrutalDOMBase {
    * optionally have any slots it contains filled with values. This Node can be inserted into the DOM.
    *
    * @param {Object} options
-   * @param {Object} options.fillSlots - if present, this is an object where the property names are assumed to be slots with that name and the values are to be set as the innerText of the slot.  Each element of this object *must* be a slot inside the template. There can be more than one slot with any name and all will be filled in.
+   * @param {Object} [options.fillSlots] - if present, this is an object where the property names are assumed to be slots with that name and the values are to be set as the innerText of the slot.  Each element of this object *must* be a slot inside the template. There can be more than one slot with any name and all will be filled in.
    *
    * @returns {external:Node} a new Node, filled with `options.fillSlots`, ready to be inserted into the DOM. 
    */

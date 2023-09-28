@@ -5,6 +5,12 @@
  */
 
 /**
+ * The browser-provided Element's animate method.
+ * @external Element-animate
+ * @see {@link https://developer.mozilla.org/en-US/docs/Web/API/Element/animate}
+ */
+
+/**
  * The browser-provided Node.
  * @external Node
  * @see {@link http://developer.mozilla.org/en-US/docs/Web/API/Node}
@@ -18,7 +24,7 @@
 
 /**
  * The PerformanceObserver API.
- * @external Performance
+ * @external PerformanceObserver
  * @see {@link http://developer.mozilla.org/en-US/docs/Web/API/PerformanceObserver}
  */
 

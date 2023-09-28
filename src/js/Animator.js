@@ -2,13 +2,14 @@ import AnimatorPreferences from "./AnimatorPreferences"
 import BrutalDOMBase       from "./BrutalDOMBase"
 
 /**
- * Simplified abstraction over the Element.animate() method, useful for
+ * Simplified abstraction over the `Element.animate()` method, useful for
  * animations where you are animating to certain styles and you want those
  * styles to persist after the animation, e.g. for hiding elements.
  *
  * Uses AnimatorPreferences to alter its behavior based on the user's browser.
  *
  * @see AnimatorPreferences
+ * @see external:Element-animate
  *
  */
 class Animator extends BrutalDOMBase {
@@ -17,14 +18,15 @@ class Animator extends BrutalDOMBase {
    *
    * @param {external:Element} element - The Element that will be animated
    * @param {Object} namedParams
-   * @param {Number} namedParams.duration - a number representing the ms for the animation. Default is 500
-   * @param {String} namedParams.easing - An easing value for the animation. Default is "ease-in"
+   * @param {Number} [namedParams.duration=500] - a number representing the ms for the animation.
+   * @param {String} [namedParams.easing="ease-in"] - An easing value for the animation. Should be a known [easing function]{@link https://developer.mozilla.org/en-US/docs/Web/CSS/easing-function}
    * @param {Object} namedParams.styles - An object where the keys are styles that can be animated.  Each key's
    *          value should be an object with the keys "from" and "to".  For forward
    *          animations, the element will be animated from the "from" to the "to"
    *          and the "to" styles will be applied at the end.  For backwards animation
    *          it uses "to" as the starting point and "from" as the end, with the
    *          "from" styles being applied.
+   *
    */
   constructor(element, { duration, easing, styles, animatorPreferences }) {
     super()
@@ -58,7 +60,7 @@ class Animator extends BrutalDOMBase {
    * Animate the element forward, with "from" at the start and
    * "to" at the end.
    *
-   * @param {Number} durationOverride - Set this to override the duration used in the constructor.
+   * @param {Number} [durationOverride] - Set this to override the duration in ms used in the constructor.
    *
    * @returns {external:Promise} on which you can call then() to perform additional
    * functions after the animation completes. Note when animation is skipped, the 'from' state is set immediately on the element,
@@ -83,6 +85,8 @@ class Animator extends BrutalDOMBase {
    * immediately. This is useful if you want to style a component
    * in its pre-animated state, but bring the UI with the forward
    * animation completed.
+   *
+   * @returns {undefined}
    */
   setForwardNow() {
     this.whenDoneForward.forEach( (f) => f() )
@@ -92,7 +96,7 @@ class Animator extends BrutalDOMBase {
    * Animate the element backwaord, with "to" at the start and
    * "from" at the end.
    *
-   * @param {Number} durationOverride - Set this to override the duration used in the constructor.
+   * @param {Number} [durationOverride] - Set this to override the duration in ms used in the constructor.
    *
    * @returns {external:Promise} on which you can call then() to perform additional
    * functions after the animation completes
@@ -116,6 +120,8 @@ class Animator extends BrutalDOMBase {
    * immediately. This is useful if you want to style a component
    * in its pre-animated state, but being the UI with the forward
    * animation completed.
+   *
+   * @returns {undefined}
    */
   setBackwardNow() {
     this.whenDoneBackward.forEach( (f) => f() )

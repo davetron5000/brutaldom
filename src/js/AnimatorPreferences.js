@@ -1,8 +1,12 @@
 import BrutalDOMBase from "./BrutalDOMBase"
 
 /** Wrapper for preferences regarding animation.
- * @property {Boolean} immediateAlways - if true, the user's browser is set to reduce motion and thus animations should happen
- * immediately.
+ *
+ * @property {Boolean} immediateAlways - if true, animations should always be completed immediately.  This can be set in a few
+ * ways:
+ * * If the `<document>` has `data-animator-immediate="true"`, then `immediateAlways` is true
+ * * If the `<document>` has `data-animator-immediate="false"`, then `immediateAlways` is false
+ * * Otherwise, `immediateAlways` is true if the browser has `prefers-reduced-motion`
  */
 class AnimatorPreferences extends BrutalDOMBase {
   constructor() {

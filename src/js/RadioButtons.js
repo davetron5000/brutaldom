@@ -12,6 +12,11 @@ class RadioButton extends Component {
 
 /** Wrapper around radio buttons that allows treating this like a select. Exposes onSelected that will
  * include the selected value, as transformed by valueTransform.  A selected setter allows setting the selected value.
+ *
+ * Note that this is *not* and instance of `Component`, but instead a wrapper for radio buttons.  Each radio button
+ * is wrapped in a `Component`, but if you want to treat a set of radio buttons as a component, you should create a class
+ * for that, and have that class use this one internally.
+ *
  */
 class RadioButtons {
 
@@ -37,6 +42,10 @@ class RadioButtons {
     })
   }
 
+ /** 
+   * Write-only setter that sets which radio button is selected. Should be given the `value=` of the radio button to select.
+   * Will not fire the Event Manager.
+   */
   set selected(val) {
     this.radioButtons.forEach( (radioButton) => {
       if (radioButton.value == val) {
@@ -51,5 +60,13 @@ class RadioButtons {
 /**
  * Called to transform the radio button's value before the event manager is fired.
  * @callback RadioButton~valueTransform
+ */
+/**
+ * @name onSelected
+ * @function
+ * @memberof RadioButtons
+ * @instance
+ * @description Called when a radio button is selected
+ * @param {function} callback - function to call when this checkbox is unchecked, given the value of the radio button.
  */
 export default RadioButtons

@@ -9,11 +9,11 @@ import BrutalDOMError from "./BrutalDOMError"
  * all accept details objects and these are compounded, so that methodDone will include ALL details recorded during the method.
  * This allows you to build up context about what happened inside the method.
  *
- * @mixin
  * @see BrutalDOMBase
  * @see {external:Performance}
+ * @mixin
  */
-const LogMixin = {
+const Log = {
 
   /** Used to log the start of a method for later measurement of the method's duration.
    *
@@ -95,7 +95,7 @@ const LogMixin = {
    * @param {Class} klass - a Class
    */
   mixin(klass) {
-    Object.assign(klass.prototype,LogMixin)
+    Object.assign(klass.prototype,Log)
   }
 }
-export default LogMixin
+export default Log

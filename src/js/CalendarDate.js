@@ -7,7 +7,9 @@ import BrutalDOMError from "./BrutalDOMError"
  *  @property {Number} day   - The day of the month
  */
 class CalendarDate {
-  /** @return {CalendarDate} the date for today */
+  /**
+   * @return {CalendarDate} the date for today
+   */
   static today() {
     return CalendarDate.daysAgo(0)
   }
@@ -38,7 +40,7 @@ class CalendarDate {
   /**
    * Create a CalendarDate based on either a string or a Date
    *
-   * @param {Date|String} dateOrString - if a string, assumes it's in YYYY-MM-DD format and parses it into a Date.
+   * @param {Date|String} dateOrString - if a string, assumes it's in `YYYY-MM-DD` format and parses it into a Date.
    * @throws an error if dateOrString is not a string and not a date
    */
   constructor(dateOrString) {
@@ -80,7 +82,7 @@ class CalendarDate {
   /** 
    * @returns number of days between this CalendarDate and the passed-in one. Positive value
    * means that this date is after the passed one. This works
-   * by converted both to UTC, then examining the difference in milliseconds.
+   * by converting both to UTC, then examining the difference in milliseconds.
    *
    * @param {CalendarDate} otherCalendarDate
    */
@@ -92,7 +94,7 @@ class CalendarDate {
     return ( otherUTC.date - usUTC.date) / this.MILLISECONDS_PER_DAY
   }
 
-  /** @return true if this date is after the passed on.
+  /** @return true if this date is after the passed one.
    *
    * @param {CalendarDate} otherCalendarDate
    */
@@ -109,7 +111,7 @@ class CalendarDate {
     }
   }
 
-  /** @return {String} the YYYY-MM-DD version of this date */
+  /** @return {String} the `YYYY-MM-DD` version of this date */
   toString()    { return this.string }
 
   /** @return {CalendarDate} in UTC */

@@ -7,7 +7,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title> Select.js</title>
+  <title> Button.js</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -80,7 +80,7 @@
             <div class="content">
                 <header class="page-title">
                     <p>Source</p>
-                    <h1>Select.js</h1>
+                    <h1>Button.js</h1>
                 </header>
                 
 
@@ -89,47 +89,16 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import Component    from "./Component"
-import EventManager from "./EventManager"
+            <pre class="prettyprint source linenums"><code>import Link from "./Link"
 
-/** Wrapper for a single `&lt;SELECT>` element.  Provides an onInput event manager to retrieve
- * the value selected as well as a selected setter that will set the selected element.
- *
- * Note that this only works for single-selects.
- */
-class Select extends Component {
-  wasCreated() {
-    EventManager.defineEvents(this,"selected")
-    this.element.addEventListener("input", (event) => {
-      event.preventDefault()
-      this.selectedEventManager.fireEvent(event.target.value)
-    })
-  }
-
-  /**
-   * Write-only property to set the selected value of this select.  Should be given  the `value=` of the `&lt;option>` to select.
-   */
-  set selected(val) {
-    Array.from(this.element.options).forEach( (option) => {
-      if (option.value == val) {
-        option.selected = true
-      }
-      else {
-        option.selected = false
-      }
-    })
-  }
-}
 /**
- * @name onSelected
- * @function
- * @memberof Select
- * @instance
- * @description Called when a value is chosen from this select.
- * @param {function} callback - function to call when something is selected.  This will be given the `value=` of the `&lt;option>`
- * that was selected.
+ * Wrapper for a button.  Basically this is an alias for Link.
+ *
+ * @see Link
+ * @extends Link
  */
-export default Select
+class Button extends Link {
+}
 </code></pre>
         </article>
     </section>

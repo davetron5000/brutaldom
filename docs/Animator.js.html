@@ -72,7 +72,7 @@
             
             <nav>
                 
-                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Externals</h3><ul><li><a href="external-Element.html">Element</a></li><li><a href="external-Node.html">Node</a></li><li><a href="external-Performance.html">Performance</a></li><li><a href="external-Promise.html">Promise</a></li></ul><h3>Classes</h3><ul><li><a href="Animator.html">Animator</a></li><li><a href="AnimatorPreferences.html">AnimatorPreferences</a></li><li><a href="Body.html">Body</a></li><li><a href="BrutalDOMBase.html">BrutalDOMBase</a></li><li><a href="CalendarDate.html">CalendarDate</a></li><li><a href="Checkbox.html">Checkbox</a></li><li><a href="Component.html">Component</a></li><li><a href="Env.html">Env</a></li><li><a href="EventAlreadyDefined.html">EventAlreadyDefined</a></li><li><a href="EventManager.html">EventManager</a></li><li><a href="HumanizedString.html">HumanizedString</a></li><li><a href="Link.html">Link</a></li><li><a href="LogViewer.html">LogViewer</a></li><li><a href="RadioButtons.html">RadioButtons</a></li><li><a href="Runtime.html">Runtime</a></li><li><a href="Select.html">Select</a></li><li><a href="Template.html">Template</a></li><li><a href="TypeOf.html">TypeOf</a></li><li><a href="WrapsElement.html">WrapsElement</a></li></ul><h3>Mixins</h3><ul><li><a href="LogMixin.html">LogMixin</a></li></ul></div>
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Externals</h3><ul><li><a href="external-Element.html">Element</a></li><li><a href="external-Element-animate.html">Element-animate</a></li><li><a href="external-Node.html">Node</a></li><li><a href="external-Performance.html">Performance</a></li><li><a href="external-PerformanceObserver.html">PerformanceObserver</a></li><li><a href="external-Promise.html">Promise</a></li></ul><h3>Classes</h3><ul><li><a href="Animator.html">Animator</a></li><li><a href="AnimatorPreferences.html">AnimatorPreferences</a></li><li><a href="Body.html">Body</a></li><li><a href="BrutalDOMBase.html">BrutalDOMBase</a></li><li><a href="BrutalDOMError.html">BrutalDOMError</a></li><li><a href="Button.html">Button</a></li><li><a href="CalendarDate.html">CalendarDate</a></li><li><a href="Checkbox.html">Checkbox</a></li><li><a href="Component.html">Component</a></li><li><a href="Env.html">Env</a></li><li><a href="EventAlreadyDefined.html">EventAlreadyDefined</a></li><li><a href="EventManager.html">EventManager</a></li><li><a href="HumanizedString.html">HumanizedString</a></li><li><a href="Link.html">Link</a></li><li><a href="LogViewer.html">LogViewer</a></li><li><a href="RadioButtons.html">RadioButtons</a></li><li><a href="Runtime.html">Runtime</a></li><li><a href="Select.html">Select</a></li><li><a href="Template.html">Template</a></li><li><a href="TypeOf.html">TypeOf</a></li><li><a href="WrapsElement.html">WrapsElement</a></li></ul><h3>Mixins</h3><ul><li><a href="Log.html">Log</a></li></ul></div>
                 
             </nav>
         </div>
@@ -93,13 +93,14 @@
 import BrutalDOMBase       from "./BrutalDOMBase"
 
 /**
- * Simplified abstraction over the Element.animate() method, useful for
+ * Simplified abstraction over the `Element.animate()` method, useful for
  * animations where you are animating to certain styles and you want those
  * styles to persist after the animation, e.g. for hiding elements.
  *
  * Uses AnimatorPreferences to alter its behavior based on the user's browser.
  *
  * @see AnimatorPreferences
+ * @see external:Element-animate
  *
  */
 class Animator extends BrutalDOMBase {
@@ -108,16 +109,17 @@ class Animator extends BrutalDOMBase {
    *
    * @param {external:Element} element - The Element that will be animated
    * @param {Object} namedParams
-   * @param {Number} namedParams.duration - a number representing the ms for the animation. Default is 500
-   * @param {String} namedParams.easing - An easing value for the animation. Default is "ease-in"
+   * @param {Number} [namedParams.duration=500] - a number representing the ms for the animation.
+   * @param {String} [namedParams.easing="ease-in"] - An easing value for the animation. Should be a known [easing function]{@link https://developer.mozilla.org/en-US/docs/Web/CSS/easing-function}
    * @param {Object} namedParams.styles - An object where the keys are styles that can be animated.  Each key's
    *          value should be an object with the keys "from" and "to".  For forward
    *          animations, the element will be animated from the "from" to the "to"
    *          and the "to" styles will be applied at the end.  For backwards animation
    *          it uses "to" as the starting point and "from" as the end, with the
    *          "from" styles being applied.
+   *
    */
-  constructor(element, { duration, easing, styles }) {
+  constructor(element, { duration, easing, styles, animatorPreferences }) {
     super()
     this.element  = element
     this.duration = duration || 500
@@ -149,7 +151,7 @@ class Animator extends BrutalDOMBase {
    * Animate the element forward, with "from" at the start and
    * "to" at the end.
    *
-   * @param {Number} durationOverride - Set this to override the duration used in the constructor.
+   * @param {Number} [durationOverride] - Set this to override the duration in ms used in the constructor.
    *
    * @returns {external:Promise} on which you can call then() to perform additional
    * functions after the animation completes. Note when animation is skipped, the 'from' state is set immediately on the element,
@@ -158,23 +160,14 @@ class Animator extends BrutalDOMBase {
   animateForward(durationOverride) {
     if (this.animatorPreferences.immediateAlways) {
       this.setForwardNow()
-      return new Promise( (resolve) => {
-        resolve()
-      })
+      return Promise.resolve()
     }
     else {
-      return this.element.animate(
-        [
-          this.from,
-          this.to,
-        ],
-        {
-          duration: durationOverride || this.duration,
-          easing: this.easing,
-        }
-      ).finished.then( () => {
-        this.whenDoneForward.forEach( (f) => f() )
-      })
+      return this._animate(
+        this.from,
+        this.to,
+        durationOverride
+      ).then( () => this.setForwardNow() )
     }
   }
 
@@ -183,6 +176,8 @@ class Animator extends BrutalDOMBase {
    * immediately. This is useful if you want to style a component
    * in its pre-animated state, but bring the UI with the forward
    * animation completed.
+   *
+   * @returns {undefined}
    */
   setForwardNow() {
     this.whenDoneForward.forEach( (f) => f() )
@@ -192,7 +187,7 @@ class Animator extends BrutalDOMBase {
    * Animate the element backwaord, with "to" at the start and
    * "from" at the end.
    *
-   * @param {Number} durationOverride - Set this to override the duration used in the constructor.
+   * @param {Number} [durationOverride] - Set this to override the duration in ms used in the constructor.
    *
    * @returns {external:Promise} on which you can call then() to perform additional
    * functions after the animation completes
@@ -200,23 +195,14 @@ class Animator extends BrutalDOMBase {
   animateBackward(durationOverride) {
     if (this.animatorPreferences.immediateAlways) {
       this.setBackwardNow()
-      return new Promise( (resolve) => {
-        resolve()
-      })
+      return Promise.resolve()
     }
     else {
-      return this.element.animate(
-        [
-          this.to,
-          this.from,
-        ],
-        {
-          duration: durationOverride || this.duration,
-          easing: this.easing,
-        }
-      ).finished.then( () => {
-        this.whenDoneBackward.forEach( (f) => f() )
-      })
+      return this._animate(
+        this.to,
+        this.from,
+        durationOverride
+      ).then( () => this.setBackwardNow() )
     }
   }
 
@@ -225,9 +211,24 @@ class Animator extends BrutalDOMBase {
    * immediately. This is useful if you want to style a component
    * in its pre-animated state, but being the UI with the forward
    * animation completed.
+   *
+   * @returns {undefined}
    */
   setBackwardNow() {
     this.whenDoneBackward.forEach( (f) => f() )
+  }
+
+  _animate(to,from,durationOverride) {
+    return this.element.animate(
+      [
+        to,
+        from,
+      ],
+      {
+        duration: durationOverride || this.duration,
+        easing: this.easing,
+      }
+    ).finished
   }
 
 }
